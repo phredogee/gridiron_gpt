@@ -1,0 +1,40 @@
+fantasypros:
+  api_key: "your_fantasypros_key"
+  base_url: "https://api.fantasypros.com/v1"
+
+sleeper:
+  api_key: "your_sleeper_key"
+  base_url: "https://api.sleeper.app/v1"
+
+espn:
+  api_key: "your_espn_key"
+  base_url: "https://api.espn.com/v1"
+
+nfl:
+  api_key: "your_nfl_key"
+  base_url: "https://api.nfl.com/v1"
+
+mistral:
+  api_key: "your_mistral_key"
+  base_url: "https://api.mistral.ai/v1"
+
+slack:
+  webhook_url: "https://hooks.slack.com/services/your/webhook/url"
+  channel: "#gridiron-updates"
+
+flask:
+  base_url: "http://localhost:5000"
+  endpoints:
+    trigger_advice: "/trigger/advice"
+    push_alert: "/push/alert"
+
+embedding:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+🕒 Reset started at: 2025-08-14 13:05 
+🔧 Python: 3.11.2
+🖥️ OS: Linux 6.6.87.2-microsoft-standard-WSL2
+📁 Working dir: /home/phredo/projects/my_project/gridiron_gpt
+🔄 Resetting GridironGPT session...
+🧹 [reset] Removing __pycache__ folders...
+✅ No __pycache__ folders found.
+✅ No temp data found at data/temp
+✅ No session flags to clear.
+✅ Session reset complete.

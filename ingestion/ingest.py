@@ -1,4 +1,4 @@
-from project_gridiron_gpt.pipelines import build_pipelines
+from gridiron_gpt.pipelines import build_pipelines
 
 def ingest_all():
     data = build_pipelines()

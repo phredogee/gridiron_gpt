@@ -1,8 +1,0 @@
-app
-config
-core
-ingestion
-interface
-pipelines
-triggers
-utils

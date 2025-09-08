@@ -1,0 +1,30 @@
+# gridiron_gpt/cli/__init__.py
+
+from .main import cli  # cli() should be defined in main.py
+from .espn import espn
+
+cli.add_command(espn)
+
+def validate_cli_import():
+    try:
+        from gridiron_gpt.cli import cli
+    except ImportError as e:
+        banner_warn(f"🚫 CLI import failed: {e}")
+        raise
+
+def validate_cli_exposure():
+    try:
+        from gridiron_gpt.cli import cli
+        assert callable(cli), "CLI is not callable"
+        print("✅ CLI import and exposure is valid.")
+    except Exception as e:
+        print(f"🚫 CLI import failed: {e}")
+
+def test_cli_registry_exposure():
+    from gridiron_gpt.cli import cli
+    runner = CliRunner()
+    result = runner.invoke(cli, ["espn", "--help"])
+    assert result.exit_code == 0
+    assert "intake" in result.output
+    assert "dry-run" in result.output
+    assert "fix" in result.output

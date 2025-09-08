@@ -1,0 +1,8 @@
+{
+  "metadata": {
+    "player": "Tank Dell",
+    "provider": "mistral",
+    "token_estimate": 1423,
+    "source_layers": ["stats", "narrative", "depth"]
+  }
+}
