@@ -1,4 +1,4 @@
-# project_gridiron_gpt/core/query_engine.py
+# gridiron_gpt/core/query_engine.py
 
 from sentence_transformers import SentenceTransformer
 import faiss

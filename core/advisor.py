@@ -3,7 +3,7 @@ import os
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
-from project_gridiron_gpt.core.utils import load_index_from_file, save_index, load_documents_from_file, embed_documents
+from gridiron_gpt.core.utils import load_index_from_file, save_index, load_documents_from_file, embed_documents
 
 class Advisor:
     def __init__(self, index_path="index_rebuilt.index"):

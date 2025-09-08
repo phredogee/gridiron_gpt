@@ -1,6 +1,6 @@
 # app/advisor.py
 
-from project_gridiron_gpt.core.advisor import Advisor
+from gridiron_gpt.core.advisor import Advisor
 import numpy as np
 
 def build_advisor():

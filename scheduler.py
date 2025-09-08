@@ -1,5 +1,5 @@
-from project_gridiron_gpt.core.advisor import Advisor
-from project_gridiron_gpt.pipelines import (
+from gridiron_gpt.core.advisor import Advisor
+from gridiron_gpt.pipelines import (
     matchup_pipeline,
     injury_pipeline,
     ranking_pipeline,

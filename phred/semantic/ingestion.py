@@ -1,0 +1,1 @@
+from phred.semantic.ingestion import route_semantic_ingestion
