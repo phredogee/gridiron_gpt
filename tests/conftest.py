@@ -3,7 +3,7 @@ import pytest
 import sys
 import os
 
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
     print("🧠 Injected project root into sys.path for test discovery.")
@@ -21,3 +21,4 @@ def pytest_terminal_summary(terminalreporter, exitstatus):
         terminalreporter.write("🎉 All tests passed!\n")
     else:
         terminalreporter.write("💥 Some tests failed. Check logs above.\n")
+
