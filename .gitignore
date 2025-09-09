@@ -1,0 +1,10 @@
+# SSH keys
+id_ed25519*
+phred/id_ed25519*
+
+# Python cache
+__pycache__/
+
+# Logs and temp files
+test_errors.txt
+*.log
