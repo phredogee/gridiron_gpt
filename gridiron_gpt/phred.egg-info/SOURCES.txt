@@ -1,3 +1,4 @@
+LICENSE
 README.md
 pyproject.toml
 gridiron_gpt/phred.egg-info/PKG-INFO
