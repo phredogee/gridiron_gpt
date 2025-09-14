@@ -2,12 +2,12 @@
 
 import click
 from gridiron_gpt.semantic.espn_ingest import ingest_espn_data, dry_run_intake
-from gridiron_gpt.feedback import banner_info
+from gridiron_gpt.feedback import banner
 
 @click.group()
 def espn():
     """🏈 ESPN data intake commands"""
-    banner_info("📦 ESPN CLI module loaded.")
+    banner("📦 ESPN CLI module loaded.")
 
 @espn.command()
 @click.option("--week", required=True, type=int)

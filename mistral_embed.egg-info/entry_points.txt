@@ -1,2 +1,0 @@
-[console_scripts]
-mistral-embed = mistral_embed.cli:app

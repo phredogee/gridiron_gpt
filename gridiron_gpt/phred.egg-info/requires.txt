@@ -1,7 +1,0 @@
-xonsh
-click
-
-[dev]
-pytest
-ruff
-mypy

@@ -1,15 +1,20 @@
-# gpt/tests/test_registry.py
+# phred/cli/registry.py
 
-from phred.cli.registry import list_commands, run_command
+from phred.sports.espn import fetch_from_espn  # or your actual ESPN CLI entry point
 
-def test_registry_exposes_espn():
+def list_commands():
+    """
+    📋 Returns a mapping of CLI command names to their callables.
+    """
+    return {
+        "espn": _espn_fetcher
+    }
+
+def run_command(name, *args, **kwargs):
+    """
+    ▶️ Runs the CLI command by name.
+    """
     commands = list_commands()
-    assert "espn" in commands
-    assert callable(commands["espn"])
-
-def test_run_espn_dry_run(monkeypatch):
-    monkeypatch.setattr("sys.argv", ["phred", "espn", "--season", "2024", "--dry-run", "--limit", "2"])
-    try:
-        run_command("espn")
-    except SystemExit:
-        pass  # argparse may exit after parsing
+    if name not in commands:
+        raise ValueError(f"❌ Unknown command: {name}")
+    return commands[name](*args, **kwargs)

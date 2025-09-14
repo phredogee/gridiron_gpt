@@ -7,7 +7,7 @@ from embed_client import EmbedClient
 
 app = typer.Typer()
 
-def embed_profile(profile, provider="mistral"):
+def embed_profiles(profile, provider="mistral"):
     client = EmbedClient(provider=provider)
     return client.embed(profile)
 
@@ -19,8 +19,8 @@ def main(file: Path = typer.Argument(..., help="Path to JSON profile"),
         typer.echo(f"❌ File not found: {file}")
         raise typer.Exit(code=1)
 
-    profile = json.loads(file.read_text())
-    vec = embed_profile(profile, provider=provider)
+    profiles = json.loads(file.read_text())
+    vec = embed_profiles(profiles, provider=provider)
     typer.echo(f"✅ Embedded with {provider}: {len(vec)} dimensions")
     typer.echo(f"🎯 Preview: {vec[:5]}...")
 

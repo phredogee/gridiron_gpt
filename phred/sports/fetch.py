@@ -1,19 +1,42 @@
-# phred/sports/fetch.py
+"""
+📦 phred.sports.fetch — Central Fetcher Registry
 
-print("🎯 Starting fetch.py — initializing fetch modes")
+Handles data intake from multiple sources:
+- 🗂 Local files
+- 🌐 APIs
+- 🕸 Scrapers
+- 🏈 ESPN (via lazy import to avoid circular dependencies)
 
-# Import fetchers for local, API, and scrape modes
+Includes dry-run helpers for onboarding, testing, and contributor diagnostics.
+"""
+
+print("🎯 Initializing fetch modes...")
+
+# --- Direct imports ---
 from .local_fetch import fetch_local_data
 from .api_fetch import fetch_api_data
 from .scrape_fetch import fetch_scrape_data
 
-# 🧠 Lazy import wrapper to avoid circular import issues with ESPN
+# --- Lazy ESPN fetcher to avoid circular imports ---
 def _espn_fetcher(*args, **kwargs):
-    from .espn import fetch_from_espn
-    return fetch_from_espn(*args, **kwargs)
+    try:
+        from phred.sports.espn import fetch_from_espn
+        return fetch_from_espn(*args, **kwargs)
+    except ImportError as e:
+        print(f"⚠️ ESPN fetcher unavailable: {e}")
+        raise NotImplementedError("ESPN fetcher could not be imported.")
 
-# 🧪 Dry-run player ID generator for onboarding and testing
-def get_all_player_ids(season=2024, dry_run=True):
+# --- Central registry ---
+FETCHERS = {
+    "local": fetch_local_data,
+    "api": fetch_api_data,
+    "scrape": fetch_scrape_data,
+    "espn": _espn_fetcher,  # ✅ avoids NameError and circular imports
+}
+
+# --- Dry-run helpers ---
+def get_all_player_ids(season: int = 2024, dry_run: bool = True):
+    """Return mock player data for dry-run mode."""
     if dry_run:
         return [
             {"playerId": "P001", "name": "John Doe", "team": "Sharks", "position": "QB", "score": 95},
@@ -21,8 +44,8 @@ def get_all_player_ids(season=2024, dry_run=True):
         ]
     raise NotImplementedError("Live ESPN player ID fetch not implemented yet.")
 
-# 🧪 Dry-run player bios for contributor-facing diagnostics
-def get_player_bios(players, dry_run=True):
+def get_player_bios(players: list, dry_run: bool = True):
+    """Return mock bios for dry-run mode."""
     if dry_run:
         return [
             {"name": p["name"], "bio": f"{p['name']} is a {p['position']} for the {p['team']}."}
@@ -30,20 +53,37 @@ def get_player_bios(players, dry_run=True):
         ]
     raise NotImplementedError("Live player bio fetch not implemented yet.")
 
-# 🚧 Placeholder for full player data fetch
+def get_dry_run_payload(season: int):
+    """Return consistent ESPN-style dry-run payload."""
+    return {
+        "season": season,
+        "source": "dry-run",
+        "players": get_all_player_ids(season=season, dry_run=True)
+    }
+
+# --- Placeholders for live fetch routines ---
 def fetch_player_data(*args, **kwargs):
     raise NotImplementedError("fetch_player_data not implemented yet.")
 
-# 🚧 Placeholder for orchestrated fetch routine
 def run_fetch(*args, **kwargs):
     raise NotImplementedError("run_fetch not implemented yet.")
 
-# 📦 Central registry of fetch modes
-FETCHERS = {
-    "local": fetch_local_data,
-    "api": fetch_api_data,
-    "scrape": fetch_scrape_data,
-    "espn": _espn_fetcher,  # lazy import wrapper
-}
+# --- Validation utility ---
+def validate_fetchers():
+    """Run each fetcher in dry-run mode (if supported) and print results."""
+    print("🧪 Validating fetcher registry...")
+    for mode, fetcher in FETCHERS.items():
+        try:
+            if hasattr(fetcher, "__code") and "dry_run" in fetcher.__code__.co_varnames:
+                fetcher(dry_run=True)
+            else:
+                fetcher()
+            print(f"✅ {mode} fetcher executed successfully.")
+        except Exception as e:
+            print(f"❌ {mode} fetcher failed: {e}")
 
-print("✅ Finished fetch.py — fetch modes registered")
+    try:
+        payload = get_dry_run_payload(season=2025)
+        print(f"📦 Dry-run payload generated with {len(payload['players'])} players.")
+    except Exception as e:
+        print(f"❌ Dry-run payload failed: {e}")

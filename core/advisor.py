@@ -6,12 +6,14 @@ from sentence_transformers import SentenceTransformer
 from gridiron_gpt.core.utils import load_index_from_file, save_index, load_documents_from_file, embed_documents
 
 class Advisor:
-    def __init__(self, index_path="index_rebuilt.index"):
-        self.index_path = index_path
-        self.embeddings = None
-        self.documents = []
-        self.index = faiss.IndexFlatL2(384)  # Adjust if using different embedding dim
-        self.model = SentenceTransformer("all-MiniLM-L6-v2")
+    def __init__(self):
+        print("🧠 Advisor initialized — ready to assist.")
+
+    def add_documents(self, *args, **kwargs):
+        """
+        Stub method for adding documents.
+        """
+        print(f"📄 add_documents called with args={args}, kwargs={kwargs}")
 
     def embed(self, texts):
         return self.model.encode(texts, normalize_embeddings=True)

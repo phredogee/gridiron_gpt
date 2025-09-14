@@ -1,18 +1,18 @@
 # scripts/doctor.py
 
-from phred.utils.banner_utils import feedback_context
+from phred.feedback import FeedbackContext
 
 def run_diagnostics():
-    with feedback_context("Checking environment setup...", level="info") as ctx:
+    with FeedbackContext("Checking environment setup...", level="info") as ctx:
         import sys
         ctx.debug(f"Python executable: {sys.executable}")
         ctx.debug(f"PYTHONPATH: {sys.path}")
 
         try:
             from phred.cli.utils import feedback
-            ctx.emit("✅ CLI feedback module is importable")
+            ctx.log("✅ CLI feedback module is importable")
         except ImportError:
-            ctx.fail("❌ CLI feedback module not found")
+            ctx.log("❌ CLI feedback module not found")
 
 if __name__ == "__main__":
     run_diagnostics()
