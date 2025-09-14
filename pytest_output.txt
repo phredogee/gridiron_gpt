@@ -1,0 +1,426 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.2, pytest-8.4.2, pluggy-1.6.0 -- /home/phredo/phredenv/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/phredo/projects/my_project/gridiron_gpt
+configfile: pytest.ini
+testpaths: tests
+plugins: sugar-1.1.1, xonsh-0.19.9, anyio-4.10.0, emoji-0.2.0, clarity-1.0.1
+collecting ... collected 67 items
+
+tests/cli/test_feedback.py::test_banner_success PASSED                   [  1%]
+tests/cli/test_feedback.py::test_banner_error PASSED                     [  2%]
+tests/cli/test_feedback.py::test_banner_levels[info-\u2139\ufe0f] PASSED [  4%]
+tests/cli/test_feedback.py::test_banner_levels[success-\u2705] PASSED    [  5%]
+tests/cli/test_feedback.py::test_banner_levels[warn-\u26a0\ufe0f] PASSED [  7%]
+tests/cli/test_feedback.py::test_banner_levels[error-\u274c] PASSED      [  8%]
+tests/cli/test_feedback.py::test_banner_levels[dryrun-\U0001f9ea] PASSED [ 10%]
+tests/cli/test_feedback.py::test_banner_levels[unknown-\u2139\ufe0f] PASSED [ 11%]
+tests/cli/test_feedback.py::test_feedback_context PASSED                 [ 13%]
+tests/doctor/test_diagnostics.py::test_diagnose_espn_dry_run PASSED      [ 14%]
+tests/fetch/test_espn_fetch.py::test_get_all_player_ids_dry_run PASSED   [ 16%]
+tests/fetch/test_espn_fetch.py::test_fetch_from_espn_dry_run PASSED      [ 17%]
+tests/onboarding/test_activation_walkthrough.py::test_virtualenv_active PASSED [ 19%]
+tests/onboarding/test_activation_walkthrough.py::test_python_path_consistency PASSED [ 20%]
+tests/onboarding/test_activation_walkthrough.py::test_shell_specific_behavior PASSED [ 22%]
+tests/onboarding/test_activation_walkthrough.py::test_xonsh_activation_hint PASSED [ 23%]
+tests/onboarding/test_query_walkthrough.py::test_simple_query PASSED     [ 25%]
+tests/onboarding/test_query_walkthrough.py::test_query_with_explanation PASSED [ 26%]
+tests/onboarding/test_query_walkthrough.py::test_error_handling PASSED   [ 28%]
+tests/semantic_test.py::test_route_query_dry_run PASSED                  [ 29%]
+tests/test_cli.py::test_fetch_espn_dry_run[2024-5] PASSED                [ 31%]
+tests/test_cli.py::test_fetch_espn_dry_run[2023-10] PASSED               [ 32%]
+tests/test_cli_doctor.py::test_doctor_modes[args0-expected0] PASSED      [ 34%]
+tests/test_cli_doctor.py::test_doctor_modes[args1-expected1] PASSED      [ 35%]
+tests/test_cli_espn.py::test_espn_fetch_dry PASSED                       [ 37%]
+tests/test_cli_ranking.py::test_ranking_dry PASSED                       [ 38%]
+tests/test_cli_registry.py::test_espn_cli_exposure PASSED                [ 40%]
+tests/test_cli_registry.py::test_cli_exposes_expected_commands PASSED    [ 41%]
+tests/test_espn_fetch.py::test_espn_fetch_dry PASSED                     [ 43%]
+tests/test_espn_pipeline.py::test_pipeline PASSED                        [ 44%]
+tests/test_feedback.py::test_banner_output[success-Operation completed-\u2705] FAILED [ 46%]
+tests/test_feedback.py::test_banner_output[warning-Check configuration-\u26a0\ufe0f] FAILED [ 47%]
+tests/test_feedback.py::test_banner_output[error-Critical failure-\u274c] FAILED [ 49%]
+tests/test_feedback.py::test_banner_output[unknown-Mystery status-\u2753] FAILED [ 50%]
+tests/test_feedback.py::test_banner_empty_message FAILED                 [ 52%]
+tests/test_feedback.py::test_feedback_dry_run PASSED                     [ 53%]
+tests/test_feedback.py::test_feedback_dry_run_logs PASSED                [ 55%]
+tests/test_feedback.py::test_cli_feedback_output FAILED                  [ 56%]
+tests/test_feedback.py::test_feedback_snapshot ERROR                     [ 58%]
+tests/test_feedback.py::test_feedback_context FAILED                     [ 59%]
+tests/test_feedback.py::test_feedback_context_rule_position FAILED       [ 61%]
+tests/test_feedback.py::test_feedback_context_exception FAILED           [ 62%]
+tests/test_feedback.py::test_nested_feedback_contexts FAILED             [ 64%]
+tests/test_feedback.py::test_banner_unknown_status FAILED                [ 65%]
+tests/test_feedback_context.py::test_emit_success_message PASSED         [ 67%]
+tests/test_feedback_context.py::test_dry_run_logging PASSED              [ 68%]
+tests/test_ingestion.py::test_route_ingestion_dry_run PASSED             [ 70%]
+tests/test_ingestion.py::test_loaded_data_structure PASSED               [ 71%]
+tests/test_ingestion.py::test_split_matchup_keys[matchup_001:teamA_vs_teamB-expected0] PASSED [ 73%]
+tests/test_ingestion.py::test_split_matchup_keys[matchup_002:teamC_vs_teamD-expected1] PASSED [ 74%]
+tests/test_ingestion.py::test_split_matchup_keys_invalid[matchup_003] PASSED [ 76%]
+tests/test_ingestion.py::test_split_matchup_keys_invalid[Sample record one] PASSED [ 77%]
+tests/test_pipeline.py::test_pipeline PASSED                             [ 79%]
+tests/test_pipeline.py::test_advisor_introspection PASSED                [ 80%]
+tests/test_pipeline.py::test_pipeline_dry_run_output FAILED              [ 82%]
+tests/test_pipeline.py::test_pipeline_execution_stub FAILED              [ 83%]
+tests/test_pipeline.py::test_pipeline_dry_run_behavior[ranking-\U0001f9ea Running in dry-run mode] FAILED [ 85%]
+tests/test_pipeline.py::test_pipeline_dry_run_behavior[espn-\U0001f9ea ESPN fetch skipped] FAILED [ 86%]
+tests/test_profile_builder.py::test_mahomes_profile PASSED               [ 88%]
+tests/test_query.py::test_basic_query PASSED                             [ 89%]
+tests/test_query.py::test_query_edge_cases[SELECT 0-0] PASSED            [ 91%]
+tests/test_query.py::test_query_edge_cases[SELECT NULL-None] PASSED      [ 92%]
+tests/test_query.py::test_query_edge_cases[SELECT 'text'-text] PASSED    [ 94%]
+tests/test_query.py::test_parametrized_queries ERROR                     [ 95%]
+tests/test_query.py::test_invalid_query PASSED                           [ 97%]
+tests/test_query.py::test_feedback PASSED                                [ 98%]
+tests/test_smoke.py::test_smoke PASSED                                   [100%]
+
+==================================== ERRORS ====================================
+___________________ ERROR at setup of test_feedback_snapshot ___________________
+file /home/phredo/projects/my_project/gridiron_gpt/tests/test_feedback.py, line 65
+  def test_feedback_snapshot(snapshot):
+E       fixture 'snapshot' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, check_completer, completer_obj, completion_context_parse, doctest_namespace, env, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, is_xonsh, load_xontrib, mock_executables_in, mock_xonsh_session, monkeypatch, monkeypatch_stderr, os_env, patch_locate_binary, ptk_shell, pytestconfig, readline_shell, record_property, record_testsuite_property, record_xml_attribute, recwarn, session_env, session_execer, session_os_env, source_path, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, virtualenv_path, xession, xonsh_events, xonsh_execer, xonsh_execer_exec, xonsh_execer_parse, xonsh_session, xsh_with_aliases, xsh_with_env
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/home/phredo/projects/my_project/gridiron_gpt/tests/test_feedback.py:65
+_________________ ERROR at setup of test_parametrized_queries __________________
+file /home/phredo/projects/my_project/gridiron_gpt/tests/test_query.py, line 31
+  def test_parametrized_queries(query, expected):
+E       fixture 'query' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, check_completer, completer_obj, completion_context_parse, doctest_namespace, env, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, is_xonsh, load_xontrib, mock_executables_in, mock_xonsh_session, monkeypatch, monkeypatch_stderr, os_env, patch_locate_binary, ptk_shell, pytestconfig, readline_shell, record_property, record_testsuite_property, record_xml_attribute, recwarn, session_env, session_execer, session_os_env, source_path, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, virtualenv_path, xession, xonsh_events, xonsh_execer, xonsh_execer_exec, xonsh_execer_parse, xonsh_session, xsh_with_aliases, xsh_with_env
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/home/phredo/projects/my_project/gridiron_gpt/tests/test_query.py:31
+=================================== FAILURES ===================================
+____________ test_banner_output[success-Operation completed-\u2705] ____________
+
+status = 'success', message = 'Operation completed', expected = '✅'
+
+    @pytest.mark.parametrize("status,message,expected", [
+        ("success", "Operation completed", "✅"),
+        ("warning", "Check configuration", "⚠️"),
+        ("error", "Critical failure", "❌"),
+        ("unknown", "Mystery status", "❓"),
+    ])
+    def test_banner_output(status, message, expected):
+>       banner = render_banner(status, message)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_feedback.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+status = 'success', message = 'Operation completed'
+
+    def render_banner(status, message):
+>       from phred.feedback import EMOJIS  # or use a local EMOJIS if already imported
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ImportError: cannot import name 'EMOJIS' from 'phred.feedback' (/home/phredo/projects/my_project/gridiron_gpt/phred/feedback/__init__.py)
+
+tests/test_feedback.py:35: ImportError
+_________ test_banner_output[warning-Check configuration-\u26a0\ufe0f] _________
+
+status = 'warning', message = 'Check configuration', expected = '⚠️'
+
+    @pytest.mark.parametrize("status,message,expected", [
+        ("success", "Operation completed", "✅"),
+        ("warning", "Check configuration", "⚠️"),
+        ("error", "Critical failure", "❌"),
+        ("unknown", "Mystery status", "❓"),
+    ])
+    def test_banner_output(status, message, expected):
+>       banner = render_banner(status, message)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_feedback.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+status = 'warning', message = 'Check configuration'
+
+    def render_banner(status, message):
+>       from phred.feedback import EMOJIS  # or use a local EMOJIS if already imported
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ImportError: cannot import name 'EMOJIS' from 'phred.feedback' (/home/phredo/projects/my_project/gridiron_gpt/phred/feedback/__init__.py)
+
+tests/test_feedback.py:35: ImportError
+______________ test_banner_output[error-Critical failure-\u274c] _______________
+
+status = 'error', message = 'Critical failure', expected = '❌'
+
+    @pytest.mark.parametrize("status,message,expected", [
+        ("success", "Operation completed", "✅"),
+        ("warning", "Check configuration", "⚠️"),
+        ("error", "Critical failure", "❌"),
+        ("unknown", "Mystery status", "❓"),
+    ])
+    def test_banner_output(status, message, expected):
+>       banner = render_banner(status, message)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_feedback.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+status = 'error', message = 'Critical failure'
+
+    def render_banner(status, message):
+>       from phred.feedback import EMOJIS  # or use a local EMOJIS if already imported
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ImportError: cannot import name 'EMOJIS' from 'phred.feedback' (/home/phredo/projects/my_project/gridiron_gpt/phred/feedback/__init__.py)
+
+tests/test_feedback.py:35: ImportError
+______________ test_banner_output[unknown-Mystery status-\u2753] _______________
+
+status = 'unknown', message = 'Mystery status', expected = '❓'
+
+    @pytest.mark.parametrize("status,message,expected", [
+        ("success", "Operation completed", "✅"),
+        ("warning", "Check configuration", "⚠️"),
+        ("error", "Critical failure", "❌"),
+        ("unknown", "Mystery status", "❓"),
+    ])
+    def test_banner_output(status, message, expected):
+>       banner = render_banner(status, message)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_feedback.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+status = 'unknown', message = 'Mystery status'
+
+    def render_banner(status, message):
+>       from phred.feedback import EMOJIS  # or use a local EMOJIS if already imported
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ImportError: cannot import name 'EMOJIS' from 'phred.feedback' (/home/phredo/projects/my_project/gridiron_gpt/phred/feedback/__init__.py)
+
+tests/test_feedback.py:35: ImportError
+__________________________ test_banner_empty_message ___________________________
+
+    def test_banner_empty_message():
+        from phred.feedback import render_banner
+>       banner = render_banner("warning", "")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_feedback.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+status = 'warning', message = ''
+
+    def render_banner(status, message):
+>       emoji = EMOJIS.get(status, "ℹ️")  # ✅ use EMOJIS, not STATUS_EMOJI
+                ^^^^^^
+E       NameError: name 'EMOJIS' is not defined
+
+phred/feedback/banner.py:4: NameError
+___________________________ test_cli_feedback_output ___________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x70d0f67ec7d0>
+
+    def test_cli_feedback_output(monkeypatch):
+        monkeypatch.setattr("sys.argv", ["phred", "feedback", "--dry-run"])
+        with pytest.raises(SystemExit):
+>           from phred.cli import main
+
+tests/test_feedback.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+phred/cli/main.py:5: in <module>
+    from modules.semantic_pipeline import SemanticPipeline
+modules/semantic_pipeline.py:3: in <module>
+    from modules.embed_data import embed_profiles
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    # modules/embed_data.py
+    
+    import json
+    import openai
+    import os
+>   from modules.utils import banner
+E   ImportError: cannot import name 'banner' from 'modules.utils' (/home/phredo/projects/my_project/gridiron_gpt/modules/utils.py)
+
+modules/embed_data.py:6: ImportError
+____________________________ test_feedback_context _____________________________
+
+    def test_feedback_context():
+        from phred.feedback import FeedbackContext
+        with FeedbackContext("success") as ctx:
+>           ctx.log("All systems go")
+            ^^^^^^^
+E           AttributeError: 'FeedbackContext' object has no attribute 'log'
+
+tests/test_feedback.py:73: AttributeError
+----------------------------- Captured stdout call -----------------------------
+ℹ️ success
+————————————————————————————————————————
+_____________________ test_feedback_context_rule_position ______________________
+
+    def test_feedback_context_rule_position():
+        from phred.feedback import FeedbackContext
+        ctx = FeedbackContext("warning")
+>       ctx.log("Rule misaligned")
+        ^^^^^^^
+E       AttributeError: 'FeedbackContext' object has no attribute 'log'
+
+tests/test_feedback.py:79: AttributeError
+_______________________ test_feedback_context_exception ________________________
+
+    def test_feedback_context_exception():
+        from phred.feedback import FeedbackContext
+        try:
+            with FeedbackContext("error") as ctx:
+>               raise ValueError("Simulated failure")
+E               ValueError: Simulated failure
+
+tests/test_feedback.py:86: ValueError
+
+During handling of the above exception, another exception occurred:
+
+    def test_feedback_context_exception():
+        from phred.feedback import FeedbackContext
+        try:
+            with FeedbackContext("error") as ctx:
+                raise ValueError("Simulated failure")
+        except ValueError:
+>           assert "❌" in str(ctx)
+E           assert in failed. [pytest-clarity diff shown]
+E             [0m
+E             [0m[32mLHS[0m vs [31mRHS[0m shown below
+E             [0m
+E             [0m[32m❌[0m
+E             [0m[31m<phred.feedback.FeedbackContext object at 0x70d0e1cbdf90>[0m
+E             [0m
+
+tests/test_feedback.py:88: AssertionError
+----------------------------- Captured stdout call -----------------------------
+ℹ️ error
+————————————————————————————————————————
+________________________ test_nested_feedback_contexts _________________________
+
+    def test_nested_feedback_contexts():
+        from phred.feedback import FeedbackContext
+        with FeedbackContext("success") as outer:
+>           outer.log("Outer success")
+            ^^^^^^^^^
+E           AttributeError: 'FeedbackContext' object has no attribute 'log'
+
+tests/test_feedback.py:93: AttributeError
+----------------------------- Captured stdout call -----------------------------
+ℹ️ success
+————————————————————————————————————————
+__________________________ test_banner_unknown_status __________________________
+
+    def test_banner_unknown_status():
+        from phred.feedback import render_banner
+>       banner = render_banner("alien", "Unrecognized status")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_feedback.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+status = 'alien', message = 'Unrecognized status'
+
+    def render_banner(status, message):
+>       emoji = EMOJIS.get(status, "ℹ️")  # ✅ use EMOJIS, not STATUS_EMOJI
+                ^^^^^^
+E       NameError: name 'EMOJIS' is not defined
+
+phred/feedback/banner.py:4: NameError
+_________________________ test_pipeline_dry_run_output _________________________
+
+capsys = <_pytest.capture.CaptureFixture object at 0x70d0e1c45710>
+
+    def test_pipeline_dry_run_output(capsys):
+>       run_pipeline_logic("ranking", advisor, dry_run=True)
+E       TypeError: run_pipeline_logic() got multiple values for argument 'dry_run'
+
+tests/test_pipeline.py:47: TypeError
+_________________________ test_pipeline_execution_stub _________________________
+
+    def test_pipeline_execution_stub():
+        # This test assumes run_pipeline_logic returns something in non-dry-run mode
+>       result = run_pipeline_logic("ranking", advisor, dry_run=False)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: run_pipeline_logic() got multiple values for argument 'dry_run'
+
+tests/test_pipeline.py:53: TypeError
+__ test_pipeline_dry_run_behavior[ranking-\U0001f9ea Running in dry-run mode] __
+
+pipeline_name = 'ranking', expected_log = '🧪 Running in dry-run mode'
+capsys = <_pytest.capture.CaptureFixture object at 0x70d0e1cc8210>
+
+    @pytest.mark.parametrize("pipeline_name,expected_log", [
+        ("ranking", "🧪 Running in dry-run mode"),
+        ("espn", "🧪 ESPN fetch skipped"),
+    ])
+    def test_pipeline_dry_run_behavior(pipeline_name, expected_log, capsys):
+>       run_pipeline_logic(pipeline_name, advisor, dry_run=True)
+E       TypeError: run_pipeline_logic() got multiple values for argument 'dry_run'
+
+tests/test_pipeline.py:61: TypeError
+______ test_pipeline_dry_run_behavior[espn-\U0001f9ea ESPN fetch skipped] ______
+
+pipeline_name = 'espn', expected_log = '🧪 ESPN fetch skipped'
+capsys = <_pytest.capture.CaptureFixture object at 0x70d0e1c468d0>
+
+    @pytest.mark.parametrize("pipeline_name,expected_log", [
+        ("ranking", "🧪 Running in dry-run mode"),
+        ("espn", "🧪 ESPN fetch skipped"),
+    ])
+    def test_pipeline_dry_run_behavior(pipeline_name, expected_log, capsys):
+>       run_pipeline_logic(pipeline_name, advisor, dry_run=True)
+E       TypeError: run_pipeline_logic() got multiple values for argument 'dry_run'
+
+tests/test_pipeline.py:61: TypeError
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+../../../phredenv/lib/python3.11/site-packages/transformers/utils/generic.py:441
+  /home/phredo/phredenv/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+    _torch_pytree._register_pytree_node(
+
+../../../phredenv/lib/python3.11/site-packages/transformers/utils/generic.py:309
+  /home/phredo/phredenv/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+    _torch_pytree._register_pytree_node(
+
+tests/test_feedback.py::test_cli_feedback_output
+  /home/phredo/phredenv/lib/python3.11/site-packages/spacy/cli/_util.py:23: DeprecationWarning: Importing 'parser.split_arg_string' is deprecated, it will only be available in 'shell_completion' in Click 9.0.
+    from click.parser import split_arg_string
+
+tests/test_feedback.py::test_cli_feedback_output
+  /home/phredo/phredenv/lib/python3.11/site-packages/weasel/util/config.py:8: DeprecationWarning: Importing 'parser.split_arg_string' is deprecated, it will only be available in 'shell_completion' in Click 9.0.
+    from click.parser import split_arg_string
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+💥 Some tests failed. Check logs above.
+=========================== short test summary info ============================
+FAILED tests/test_feedback.py::test_banner_output[success-Operation completed-\u2705] - ImportError: cannot import name 'EMOJIS' from 'phred.feedback' (/home/phredo/projects/my_project/gridiron_gpt/phred/feedback/__init__.py)
+FAILED tests/test_feedback.py::test_banner_output[warning-Check configuration-\u26a0\ufe0f] - ImportError: cannot import name 'EMOJIS' from 'phred.feedback' (/home/phredo/projects/my_project/gridiron_gpt/phred/feedback/__init__.py)
+FAILED tests/test_feedback.py::test_banner_output[error-Critical failure-\u274c] - ImportError: cannot import name 'EMOJIS' from 'phred.feedback' (/home/phredo/projects/my_project/gridiron_gpt/phred/feedback/__init__.py)
+FAILED tests/test_feedback.py::test_banner_output[unknown-Mystery status-\u2753] - ImportError: cannot import name 'EMOJIS' from 'phred.feedback' (/home/phredo/projects/my_project/gridiron_gpt/phred/feedback/__init__.py)
+FAILED tests/test_feedback.py::test_banner_empty_message - NameError: name 'EMOJIS' is not defined
+FAILED tests/test_feedback.py::test_cli_feedback_output - ImportError: cannot import name 'banner' from 'modules.utils' (/home/phredo/projects/my_project/gridiron_gpt/modules/utils.py)
+FAILED tests/test_feedback.py::test_feedback_context - AttributeError: 'FeedbackContext' object has no attribute 'log'
+FAILED tests/test_feedback.py::test_feedback_context_rule_position - AttributeError: 'FeedbackContext' object has no attribute 'log'
+FAILED tests/test_feedback.py::test_feedback_context_exception - assert in failed. [pytest-clarity diff shown]
+  [0m
+  [0m[32mLHS[0m vs [31mRHS[0m shown below
+  [0m
+  [0m[32m❌[0m
+  [0m[31m<phred.feedback.FeedbackContext object at 0x70d0e1cbdf90>[0m
+  [0m
+FAILED tests/test_feedback.py::test_nested_feedback_contexts - AttributeError: 'FeedbackContext' object has no attribute 'log'
+FAILED tests/test_feedback.py::test_banner_unknown_status - NameError: name 'EMOJIS' is not defined
+FAILED tests/test_pipeline.py::test_pipeline_dry_run_output - TypeError: run_pipeline_logic() got multiple values for argument 'dry_run'
+FAILED tests/test_pipeline.py::test_pipeline_execution_stub - TypeError: run_pipeline_logic() got multiple values for argument 'dry_run'
+FAILED tests/test_pipeline.py::test_pipeline_dry_run_behavior[ranking-\U0001f9ea Running in dry-run mode] - TypeError: run_pipeline_logic() got multiple values for argument 'dry_run'
+FAILED tests/test_pipeline.py::test_pipeline_dry_run_behavior[espn-\U0001f9ea ESPN fetch skipped] - TypeError: run_pipeline_logic() got multiple values for argument 'dry_run'
+ERROR tests/test_feedback.py::test_feedback_snapshot
+ERROR tests/test_query.py::test_parametrized_queries
+============= 15 failed, 50 passed, 9 warnings, 2 errors in 8.86s ==============

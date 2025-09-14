@@ -4,16 +4,16 @@ import importlib
 import pkgutil
 import gridiron_gpt.cli as cli_pkg
 from gridiron_gpt.cli import cli
-from gridiron_gpt.feedback import banner_info, banner_warn
+from gridiron_gpt.feedback import banner, warning
 
 def discover_cli_entry():
-    banner_info("🔍 Discovering CLI entry point...")
+    banner("🔍 Discovering CLI entry point...", emoji="ℹ️")
     try:
         assert callable(cli), "CLI entry point is not callable"
-        banner_info("✅ CLI entry point is valid.")
+        banner("✅ CLI entry point is valid.", emoji="ℹ️")
         return cli
     except Exception as e:
-        banner_warn(f"🚫 CLI discovery failed: {e}")
+        warning(f"🚫 CLI discovery failed: {e}")
         raise
 
 def discover_subcommands():

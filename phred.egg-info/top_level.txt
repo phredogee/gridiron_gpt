@@ -1,3 +1,0 @@
-gridiron_gpt
-phred
-phredenv

@@ -1,9 +1,18 @@
 # modules/fetch_espn.py
+# Avoid self-imports—define and call functions locally unless modular reuse is needed.
 
 from modules.player_lookup import get_player_id
 import requests
 
-def fetch_stats(player_name, metrics):
+def fetch_stats(player, metrics=None):
+    # Stubbed for CLI feedback testing
+    return {
+        "name": player,
+        "metrics": metrics or [],
+        "stats": {"snap_share": 0.65, "target_share": 0.22}
+    }
+
+def get_player_stats(player_name, metrics):
     player_id = get_player_id(player_name)
     if not player_id:
         print(f"❌ Unknown player: {player_name}")

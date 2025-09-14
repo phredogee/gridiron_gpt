@@ -1,0 +1,4 @@
+# dev-requirements.txt
+-r requirements.txt
+pytest==8.4.2
+mypy==1.8.0

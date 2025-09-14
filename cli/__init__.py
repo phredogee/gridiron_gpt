@@ -1,6 +1,17 @@
 # gridiron_gpt/cli/__init__.py
 
-from .main import cli  # cli() should be defined in main.py
+'''
+┌────────────────────────────────────────────┐
+│  Feedback Module Export Map                │
+├────────────┬───────────────────────────────┤
+│ banner.py  │ render_banner                 │
+│ context.py │ FeedbackContext               │
+│ core.py    │ generate_feedback             │
+│ __init__.py│ Explicit exports via __all__  │
+└────────────┴───────────────────────────────┘
+'''
+
+from .main import cli, main  # cli() should be defined in main.py
 from .espn import espn
 
 cli.add_command(espn)

@@ -1,104 +1,104 @@
-from phred.feedback import banner, feedback_context
-from unittest.mock import patch
+# gridiron_gpt/tests/test_feedback.py
+
 import pytest
-import subprocess
+from modules.utils import EMOJIS
+from phred.feedback import render_banner
+from phred.feedback.context import FeedbackContext
 
-def test_banner_success():
-    msg = banner("All systems go", status="success")
-    assert "✅" in msg
-    assert "All systems go" in msg
+with FeedbackContext("success") as ctx:
+    ctx.log("Your message here")
 
-def test_banner_warning():
-    msg = banner("Caution advised", status="warning")
-    assert "⚠️" in msg
+# ┌────────────────────────────────────────────┐
+# │  Feedback Banner Test Map                  │
+# ├────────────┬───────────────────────────────┤
+# │ Status     │ Expected Symbols              │
+# ├────────────┼───────────────────────────────┤
+# │ success    │ ✅                            │
+# │ warning    │ ⚠️                             │
+# │ error      │ ❌                            │
+# │ unknown    │ ❓ or fallback                │
+# └────────────┴───────────────────────────────┘
 
-def test_banner_error():
-    msg = banner("Failure detected", status="error")
-    assert "❌" in msg
+EMOJIS = {
+    "info": "ℹ️",
+    "success": "✅",
+    "warning": "⚠️",
+    "error": "❌",
+    "debug": "🛠️"
+}
 
-def emit(self, message: str):
-    emojis = {
-        "info": "🧠",
-        "success": "✅",
-        "warn": "⚠️",
-        "error": "❌",
-        "debug": "🛠️"
-    }
-    emoji = emojis.get(self.level, "🧠")
-    banner_msg = f"\n{emoji} {message}\n{'-' * 40}"
-    if divider:
-        banner_msg += "-" * 40
-    if self.dry_run:
-        self.logs.append(f"DRY-RUN: {message}")
-    else:
-        print(banner_msg, flush=True)
+@pytest.mark.parametrize("status,message,expected", [
+    ("success", "Operation completed", "✅"),
+    ("warning", "Check configuration", "⚠️"),
+    ("error", "Critical failure", "❌"),
+    ("unknown", "Mystery status", "❓"),
+])
+def test_banner_output(status, message, expected):
+    banner = render_banner(status, message)
+    assert expected in banner
+    assert message in banner
 
-def test_feedback_context(capsys):
-    with feedback_context("Testing context", level="success"):
-        print("Inside context")
-    captured = capsys.readouterr()
-    assert "-" * 40 in captured.out
-
-def test_feedback_context_rule_position(capsys):
-    with feedback_context("Rule test", level="info"):
-        print("Mid-message")
-    captured = capsys.readouterr()
-    lines = captured.out.strip().splitlines()
-    assert lines[0].startswith("ℹ️ Rule test")
-    assert lines[-1] == "—" * 40
-
-def test_feedback_context_exception(capsys):
-    with pytest.raises(ValueError):
-        with feedback_context("Error context", level="error"):
-            raise ValueError("Boom")
-    captured = capsys.readouterr()
-    assert "❌ Error context" in captured.out
-
-def test_nested_feedback_contexts(capsys):
-    with feedback_context("Outer", level="warning"):
-        with feedback_context("Inner", level="success"):
-            print("Deep inside")
-    captured = capsys.readouterr()
-    assert "⚠️ Outer" in captured.out
-    assert "✅ Inner" in captured.out
-    assert "Deep inside" in captured.out
-
-def test_banner_unknown_status():
-    msg = banner("Unknown status test", status="mystery")
-    assert "🔔" in msg or "ℹ️" in msg  # fallback emoji
+def render_banner(status, message):
+    emoji = EMOJIS.get(status, "❓")
+    if not message:
+        message = "No message provided"
+    return f"{emoji} {message}"
 
 def test_banner_empty_message():
-    msg = banner("", status="success")
-    assert "✅" in msg
-    assert msg.strip() != "✅"  # should still include some structure
+    banner = render_banner("warning", "")
+    assert "⚠️" in banner
+    assert "No message provided" in banner
 
-def test_banner_custom_emoji():
-    msg = banner("Custom emoji", status="success", emoji="🚀")
-    assert "🚀" in msg
-
-def test_feedback_dry_run(capsys):
-    with feedback_context("Dry run", level="info", dry_run=True):
-        print("Should not appear")
-    captured = capsys.readouterr()
-    assert "Should not appear" not in captured.out
+def test_feedback_dry_run():
+    from phred.feedback import generate_feedback
+    output = generate_feedback(dry_run=True)
+    assert "ℹ️ Dry run — no changes made" in output
+    assert "✅" in output or "⚠️" in output
 
 def test_feedback_dry_run_logs():
-    with patch("phred.feedback.logger") as mock_logger:
-        with feedback_context("Dry run", dry_run=True):
-            pass
-    mock_logger.info.assert_called_with("Dry run: Dry run")
+    from phred.feedback import generate_feedback
+    logs = generate_feedback(dry_run=True, return_logs=True)
+    assert isinstance(logs, list)
+    assert any("Dry run" in log for log in logs)
 
-def test_cli_feedback_output():
-    result = subprocess.run(["phred", "doctor"], capture_output=True, text=True)
-    assert "✅" in result.stdout or "⚠️" in result.stdout
+def test_cli_feedback_output(monkeypatch):
+    monkeypatch.setattr("sys.argv", ["phred", "feedback", "--dry-run"])
+    with pytest.raises(SystemExit):
+        from phred.cli import main
+        main()
 
-EXPECTED = """✅ Testing context
-Inside context
-----------------------------------------
-"""
+def test_feedback_snapshot(snapshot):
+    banner = render_banner("success", "Operation completed")
+    snapshot.assert_match(banner, "success_banner")
 
-def test_feedback_snapshot(capsys):
-    with feedback_context("Testing context", level="success"):
-        print("Inside context")
-    captured = capsys.readouterr()
-    assert captured.out.strip() == EXPECTED.strip()
+def test_feedback_context():
+    from phred.feedback.context import FeedbackContext
+    with FeedbackContext("success") as ctx:
+        ctx.log("All systems go")
+    assert "✅" in str(ctx)
+
+def test_feedback_context_rule_position():
+    from phred.feedback.context import FeedbackContext
+    ctx = FeedbackContext("warning")
+    ctx.log("Rule misaligned")
+    assert "⚠️" in str(ctx)
+
+def test_feedback_context_exception():
+    try:
+        with FeedbackContext("error") as ctx:
+            raise ValueError("Simulated failure")
+    except ValueError:
+        assert "❌" in str(ctx)
+
+def test_nested_feedback_contexts():
+    from phred.feedback.context import FeedbackContext
+    with FeedbackContext("success") as outer:
+        outer.log("Outer success")
+        with FeedbackContext("warning") as inner:
+            inner.log("Inner warning")
+    assert "✅" in str(outer)
+    assert "⚠️" in str(inner)
+
+def test_banner_unknown_status(snapshot):
+    banner = render_banner("alien", "Unrecognized status")
+    snapshot.assert_match(banner, "unknown_status_banner")

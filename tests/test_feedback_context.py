@@ -1,16 +1,18 @@
 # tests/test_feedback_context.py
 
-from phred.utils.banner_utils import feedback_context
+from phred.feedback.context import FeedbackContext
 
-def test_emit_success_message(capsys):
-    ctx = feedback_context("Operation succeeded", level="success")
-    with ctx:
-        pass
-    output = capsys.readouterr().out
-    assert "✅ Operation succeeded" in output
+def test_emit_success_message():
+    with FeedbackContext("success") as ctx:
+        ctx.log("Operation completed")
+        assert "✅" in str(ctx)
 
 def test_dry_run_logging():
-    ctx = feedback_context("Dry run test", level="debug", dry_run=True)
-    with ctx:
-        ctx.debug("This is a debug message")
-    assert "DRY-RUN DEBUG: This is a debug message" in ctx.logs
+    ctx = FeedbackContext("debug", dry_run=True)
+    ctx.debug("Dry run test message")
+    assert "DRY-RUN DEBUG: Dry run test message" in ctx.render()
+
+def test_feedback_context_basic():
+    with FeedbackContext("success") as ctx:
+        ctx.log("Operation completed")
+        assert "✅" in str(ctx)

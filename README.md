@@ -1,3 +1,17 @@
+---
+
+### 🧭 Contributor Tip
+
+To reinforce clarity, scaffold a mapping table in your README or onboarding docs:
+
+| Symbol             | Import Path                | Purpose                          |
+|--------------------|----------------------------|----------------------------------|
+| `FeedbackContext`  | `phred.feedback`           | Scoped emoji-rich logging        |
+| `banner()`         | `phred.utils.banner_utils` | Quick one-line CLI feedback      |
+| `render()`         | Method on `FeedbackContext`| Joins logs for display           |
+
+---
+
 gridiron_gpt/
 ├── __init__.py
 ├── core/
@@ -66,10 +80,24 @@ What’s Working
 
 ### 🧠 Importing Feedback Helpers
 
-To use `feedback_context`:
+### Using `FeedbackContext`
 
 ```python
-from phred.utils.banner_utils import feedback_context
+from phred.feedback import FeedbackContext
 
+with FeedbackContext("success") as ctx:
+    ctx.log("Setup complete")
+    print(ctx.render())
+
+
+#### ✅ Part 2: Developer Setup
+
+```markdown
+### Developer Environment Setup
+
+```bash
 chmod +x dev_activate.sh
 ./dev_activate.sh
+
+git tag -a v0.1.0 -m "Initial dev setup and SSH fix"
+git push origin v0.1.0

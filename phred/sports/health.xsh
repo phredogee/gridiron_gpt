@@ -16,8 +16,8 @@ def check_fetch_registry():
 # 🧠 Lazy ESPN import test
 def check_espn_fetcher():
     try:
-        from phred.sports.fetch import _espn_fetcher
-        result = _espn_fetcher(season=2024, dry_run=True)
+        from phred.sports.fetch import FETCHERS
+        result = FETCHERS["espn"](season=2024, dry_run=True)
         assert isinstance(result, list)
         print("✅ ESPN fetcher returned dry-run data")
     except Exception as e:
@@ -32,7 +32,7 @@ def show_health_banner():
 def main():
     show_health_banner()
     check_fetch_registry()
-    check_espn_fetcher()
+    checkFETCHERS ["espn"]()
     print("\n✅ All health checks complete.")
 
 main()
