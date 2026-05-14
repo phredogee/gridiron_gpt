@@ -67,6 +67,7 @@ def test_pipeline():
     assert result["count"] == len(result["rankings"])
 
 def test_advisor_introspection():
+    advisor = Advisor()
     print("Advisor class:", advisor.__class__)
     print("Advisor method args:", advisor.add_documents.__code__.co_varnames)
     print("Method:", advisor.add_documents)
