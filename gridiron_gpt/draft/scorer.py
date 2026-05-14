@@ -2,8 +2,8 @@
 
 import pandas as pd
 
-SEASONS = [2022, 2023, 2024]
-SEASON_WEIGHTS = {2022: 0.15, 2023: 0.30, 2024: 0.55}
+SEASONS = [2023, 2024, 2025]
+SEASON_WEIGHTS = {2023: 0.15, 2024: 0.30, 2025: 0.55}
 
 
 def get_historical_scores(scoring: str = "ppr", seasons: list = None) -> pd.DataFrame:

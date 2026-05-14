@@ -1,6 +1,7 @@
 # gridiron_gpt/cli/draft.py
 
 import click
+import pandas as pd
 from gridiron_gpt.draft.config import LeagueConfig
 from gridiron_gpt.draft.ranker import build_rankings, get_round_targets
 from gridiron_gpt.feedback import banner, error
@@ -45,12 +46,15 @@ def rank(position, top, scoring, teams, rounds, changes_path):
     for _, row in df.iterrows():
         adp_str = f"{row['adp']:.1f}" if row["adp"] is not None else "—"
         note_parts = []
-        if row.get("injury"):
-            note_parts.append(f"[{row['injury']}]")
-        if row.get("note"):
-            note_parts.append(row["note"])
-        if row.get("multiplier", 1.0) != 1.0:
-            note_parts.append(f"×{row['multiplier']:.2f}")
+        inj = row.get("injury")
+        if inj and not pd.isna(inj):
+            note_parts.append(f"[{inj}]")
+        note_val = row.get("note")
+        if note_val and not pd.isna(note_val):
+            note_parts.append(str(note_val))
+        mult = row.get("multiplier", 1.0)
+        if mult and mult != 1.0:
+            note_parts.append(f"×{mult:.2f}")
         note = " ".join(note_parts)
         click.echo(
             f"  {int(row['rank']):<4} {row['name']:<26} {row['position']:<5} {row['team']:<5}"
@@ -130,12 +134,15 @@ def board(scoring, teams, rounds, top, changes_path):
             click.echo(f"\n  ── Round {current_round}  (Target: {', '.join(targets)}) ──")
             click.echo(f"     {advice}\n")
 
-        adp_str = f"ADP {row['adp']:.1f}" if row["adp"] is not None else "no ADP"
+        adp_val = row["adp"]
+        adp_str = f"ADP {adp_val:.1f}" if adp_val is not None and not pd.isna(adp_val) else "no ADP"
         note_parts = []
-        if row.get("injury"):
-            note_parts.append(f"[{row['injury']}]")
-        if row.get("note"):
-            note_parts.append(str(row["note"]))
+        inj = row.get("injury")
+        if inj and not pd.isna(inj):
+            note_parts.append(f"[{inj}]")
+        note_val = row.get("note")
+        if note_val and not pd.isna(note_val):
+            note_parts.append(str(note_val))
         note = "  " + " ".join(note_parts) if note_parts else ""
 
         click.echo(

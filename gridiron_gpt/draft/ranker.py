@@ -38,7 +38,7 @@ def build_rankings(
     changes_path: str = "data/offseason_changes.yaml",
 ) -> pd.DataFrame:
     """Build composite draft rankings from historical stats, ADP, injuries, and offseason changes."""
-    print("📊 Loading historical scores (2022–2024)...")
+    print("📊 Loading historical scores (2023–2025)...")
     hist = get_historical_scores(scoring=config.scoring)
 
     print("📡 Fetching ADP data...")
@@ -63,7 +63,9 @@ def build_rankings(
         # Convert ADP to 0–100 score (lower ADP = higher value)
         adp_score = max(0.0, (total_picks - adp + 1) / total_picks * 100) if adp <= total_picks else 0.0
 
-        inj_status = injuries.get(name, "")
+        inj_status_raw = injuries.get(name, "")
+        # Only flag statuses that actually affect availability
+        inj_status = inj_status_raw if inj_status_raw in INJURY_PENALTIES else ""
         inj_penalty = INJURY_PENALTIES.get(inj_status, 0.0)
 
         change = changes.get(name, {})
