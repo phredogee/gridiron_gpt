@@ -14,6 +14,7 @@
 import click
 from .espn import espn
 from .ask import ask
+from .draft import draft
 
 @click.group()
 def cli():
@@ -22,6 +23,7 @@ def cli():
 
 cli.add_command(espn)
 cli.add_command(ask)
+cli.add_command(draft)
 
 __all__ = ["cli", "main"]
 

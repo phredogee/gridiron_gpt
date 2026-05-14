@@ -1,0 +1,55 @@
+# offseason_changes.yaml
+# Adjust player projections based on offseason news.
+#
+# multiplier: float
+#   > 1.0  = projection boost  (e.g., new offensive role, healthy return)
+#   < 1.0  = projection downgrade (e.g., injury concern, role reduction)
+#   = 1.0  = no change (default if not listed)
+#
+# note: short string shown in draft board output
+#
+# Usage:
+#   espn draft rank --changes data/offseason_changes.yaml
+#
+# Update this file during the offseason as news breaks.
+# Re-run "espn draft board" to see updated rankings.
+
+players:
+  # ── Quarterback changes ─────────────────────────────────────────────────────
+  # Patrick Mahomes:
+  #   multiplier: 1.05
+  #   note: "New OC, expect higher passing volume"
+  #
+  # Aaron Rodgers:
+  #   multiplier: 0.90
+  #   note: "ACL recovery — monitor camp status"
+
+  # ── Running back changes ─────────────────────────────────────────────────────
+  # Christian McCaffrey:
+  #   multiplier: 0.92
+  #   note: "Hamstring concern, limited OTAs"
+  #
+  # Saquon Barkley:
+  #   multiplier: 1.08
+  #   note: "Full-time starter in new offense"
+
+  # ── Wide receiver changes ────────────────────────────────────────────────────
+  # Davante Adams:
+  #   multiplier: 0.85
+  #   note: "QB situation uncertain"
+  #
+  # Justin Jefferson:
+  #   multiplier: 1.0
+  #   note: "Healthy and fully cleared"
+
+  # ── Tight end changes ────────────────────────────────────────────────────────
+  # Travis Kelce:
+  #   multiplier: 0.95
+  #   note: "Age/workload concern, still elite"
+
+  # ── Coaching / scheme changes ─────────────────────────────────────────────
+  # Team-wide boosts can be listed by player name.
+  # Example: new pass-heavy OC installed:
+  # Tyreek Hill:
+  #   multiplier: 1.03
+  #   note: "New OC runs more 11-personnel"
