@@ -1,12 +1,10 @@
 # gridiron_gpt/main.py
 
 import argparse
-import spacy
-from modules.semantic_pipeline import SemanticPipeline
-from modules.pipeline import load_pipeline
-from modules.predictor import predict_action
 
 def run_semantic_mode(args):
+    import spacy
+    from modules.semantic_pipeline import SemanticPipeline
     print("🧠 Semantic mode activated")
     if args.verbose:
         print("📣 Verbose mode: diagnostics and banners enabled")
@@ -15,6 +13,8 @@ def run_semantic_mode(args):
     pipeline.run(args.semantic, dry_run=args.dry_run)
 
 def run_structured_mode(args):
+    from modules.pipeline import load_pipeline
+    from modules.predictor import predict_action
     print("⚙️ Structured mode activated")
     if args.verbose:
         print("📣 Verbose mode: diagnostics and banners enabled")

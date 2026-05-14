@@ -25,6 +25,8 @@ To test CLI locally:
 
 Happy CLI hacking! 🛠
 """
+from .main import main
+
 __all__ = ["main"]
 
 def cli_status():
