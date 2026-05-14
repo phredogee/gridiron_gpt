@@ -33,7 +33,7 @@ def ingest_espn_data(week: int, dry_run: bool = False, banner: bool = False):
         if banner:
             print_banner("⚠️ Data invalid—skipping save", level="warn")
 
-    return cleaned_data if dry_run else None
+    return cleaned_data
 
 def dry_run_intake(week: int, banner: bool = False):
     print_banner("🧪 Dry-running ESPN ingest", level="info") if banner else None

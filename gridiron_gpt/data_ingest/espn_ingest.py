@@ -37,6 +37,7 @@ def clean_espn_data(raw_data: list) -> list:
     for entry in raw_data:
         cleaned.append({
             "profile_id": f"{entry['team']}_{entry['player_name'].replace(' ', '_')}",
+            "player_name": entry["player_name"],
             "team": entry["team"],
             "week": entry["week"],
             "fantasy_points": float(entry["fantasy_points"]),

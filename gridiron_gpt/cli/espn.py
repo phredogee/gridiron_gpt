@@ -16,11 +16,18 @@ def espn():
 @click.option("--dry-run", is_flag=True)
 @click.option("--banner", is_flag=True)
 def intake(week, dry_run, banner):
-    """📥 Ingest ESPN player data"""
+    """📥 Ingest ESPN player data and build query index"""
     if dry_run:
         dry_run_intake(week=week, banner=banner)
-    else:
-        ingest_espn_data(week=week, dry_run=False, banner=banner)
+        return
+
+    players = ingest_espn_data(week=week, dry_run=False, banner=banner)
+
+    if players:
+        from gridiron_gpt.core.advisor import Advisor
+        advisor = Advisor()
+        advisor.build_from_players(players)
+        advisor.save()
 
 @espn.command()
 @click.option("--week", required=True, type=int, help="NFL week number to preview")

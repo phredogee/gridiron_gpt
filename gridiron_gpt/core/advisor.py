@@ -1,117 +1,104 @@
 # core/advisor.py
+
 import os
+import json
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
-from gridiron_gpt.core.utils import load_index_from_file, save_index, load_documents_from_file, embed_documents
+
+INDEX_PATH = "data/index/gridiron.index"
+DOCS_PATH = "data/index/gridiron_docs.json"
+MODEL_NAME = "all-MiniLM-L6-v2"
+
 
 class Advisor:
-    def __init__(self):
-        print("🧠 Advisor initialized — ready to assist.")
+    def __init__(self, index_path=INDEX_PATH, docs_path=DOCS_PATH):
+        self.index_path = index_path
+        self.docs_path = docs_path
+        self.model = SentenceTransformer(MODEL_NAME)
+        self.documents = []
+        self.index = None
 
-    def add_documents(self, *args, **kwargs):
-        """
-        Stub method for adding documents.
-        """
-        print(f"📄 add_documents called with args={args}, kwargs={kwargs}")
+    def _init_index(self, dim: int):
+        # IndexFlatIP with normalized embeddings gives cosine similarity (higher = more similar)
+        self.index = faiss.IndexFlatIP(dim)
 
-    def embed(self, texts):
-        return self.model.encode(texts, normalize_embeddings=True)
+    _POSITION_NAMES = {
+        "QB": "quarterback", "RB": "running back", "WR": "wide receiver",
+        "TE": "tight end", "K": "kicker", "DEF": "defense", "UNK": "player",
+    }
 
-    def add_documents(self, texts, embeddings):
-        print(f"📄 Adding {len(texts)} documents to index...")
+    _TEAM_NAMES = {
+        "ARI": "Arizona Cardinals", "ATL": "Atlanta Falcons", "BAL": "Baltimore Ravens",
+        "BUF": "Buffalo Bills", "CAR": "Carolina Panthers", "CHI": "Chicago Bears",
+        "CIN": "Cincinnati Bengals", "CLE": "Cleveland Browns", "DAL": "Dallas Cowboys",
+        "DEN": "Denver Broncos", "DET": "Detroit Lions", "GB": "Green Bay Packers",
+        "HOU": "Houston Texans", "IND": "Indianapolis Colts", "JAX": "Jacksonville Jaguars",
+        "KC": "Kansas City Chiefs", "LAC": "Los Angeles Chargers", "LAR": "Los Angeles Rams",
+        "LV": "Las Vegas Raiders", "MIA": "Miami Dolphins", "MIN": "Minnesota Vikings",
+        "NE": "New England Patriots", "NO": "New Orleans Saints", "NYG": "New York Giants",
+        "NYJ": "New York Jets", "PHI": "Philadelphia Eagles", "PIT": "Pittsburgh Steelers",
+        "SEA": "Seattle Seahawks", "SF": "San Francisco 49ers", "TB": "Tampa Bay Buccaneers",
+        "TEN": "Tennessee Titans", "WAS": "Washington Commanders",
+    }
 
-        if embeddings is None:
-            embeddings = self.model.encode(texts)
-
-        self.index.add(embeddings)
-        self.documents = texts
-        self.embeddings = embeddings
-
-        print("✅ Documents embedded and indexed.")
-
-    def ingest(self):
-        texts = [
-            "Justin Jefferson is expected to play",
-            "Bijan Robinson is a top RB this week",
-            "Jordan Addison could be a sleeper pick",
-        ]
-        embeddings = self.embed(texts)
+    def build_from_players(self, players: list):
+        """Convert cleaned player dicts into natural-language snippets and index them."""
+        texts = []
+        for p in players:
+            name = p.get("player_name") or p.get("profile_id", "Unknown")
+            pos_code = p.get("position", "UNK").upper()
+            pos = self._POSITION_NAMES.get(pos_code, pos_code)
+            team = p.get("team", "UNK")
+            week = p.get("week", "?")
+            pts = float(p.get("fantasy_points", 0))
+            team_name = self._TEAM_NAMES.get(team, team)
+            texts.append(
+                f"{name} is a {pos} ({pos_code}) for the {team_name} ({team}), "
+                f"scoring {pts:.1f} fantasy points in week {week}."
+            )
         self.add_documents(texts)
-        self.save_index(self.index_path)
-        print(f"✅ FAISS index saved to {self.index_path}")
 
-    def ingest_documents(self, source_path):
-        print(f"📄 Loading documents from: {source_path}")
-        self.documents = load_documents_from_file(source_path)
-        self.embeddings = embed_documents(self.documents)
-        self.rebuild_index()
-
-    def rebuild_index(self):
-        if self.embeddings is None:
-            raise ValueError("Embeddings must be initialized before rebuilding index.")
-        print(f"🔄 Rebuilding index with {len(self.embeddings)} documents...")
-        self.index = faiss.IndexFlatL2(self.embedding_dim)
-        self.index.add(self.embeddings.astype(np.float32))
-        save_index(self.index, self.index_path)
-        print(f"💾 Rebuilt index saved to: {self.index_path}")
-
-    def load_index(self):
-        print(f"📥 Loading index from: {self.index_path}")
-        self.index = load_index_from_file(self.index_path)
-        if self.index is None:
-            raise FileNotFoundError(f"Index file not found: {self.index_path}")
-        print("✅ Index loaded successfully.")
-
-    @property
-    def embedding_dim(self):
-        if self.embeddings is None:
-            raise ValueError("Embeddings not initialized yet.")
-        return self.embeddings.shape[1]
-
-    def compute_query_embedding(self, text):
-        return self.embed([text]).astype("float32").reshape(1, -1)
-
-    def query(self, text, top_k=3):
-        if self.index is None:
-            raise RuntimeError("Index not loaded. Call load_index() first.")
-        query_embedding = self.compute_query_embedding(text)
-        distances, indices = self.index.search(query_embedding, top_k)
-
-        print(f"\n🔍 Query: {text}")
-        print(f"📊 Top {top_k} results:")
-        for i, (idx, dist) in enumerate(zip(indices[0], distances[0])):
-            result_text = self.documents[idx] if idx < len(self.documents) else f"Index #{idx}"
-            print(f"  {i+1}. {result_text} — Distance: {dist:.4f}")
-        
-    def save_index(self, path=None):
-        save_path = path or self.index_path
-        if self.index is not None:
-            faiss.write_index(self.index, save_path)
-            print(f"💾 FAISS index saved to {save_path}")
-        else:
-            print("⚠️ No index to save.")
-
-    def load_index(self, path=None):
-            load_path = path or self.index_path
-            if os.path.exists(load_path):
-                self.index = faiss.read_index(load_path)
-                print(f"📂 FAISS index loaded from {load_path}")
-            else:
-                print(f"❌ Index file not found at {load_path}")
-
-    def add_documents(self, texts):
-        """
-        Adds a list of documents to the advisor, embeds them, and updates the FAISS index.
-        """
+    def add_documents(self, texts: list):
         if not texts:
             print("⚠️ No documents to add.")
             return
-
-        print(f"📄 Adding {len(texts)} documents to index...")
-        embeddings = self.model.encode(texts)
+        print(f"📄 Embedding {len(texts)} documents...")
+        embeddings = self.model.encode(texts, normalize_embeddings=True).astype("float32")
+        if self.index is None:
+            self._init_index(embeddings.shape[1])
         self.index.add(embeddings)
         self.documents.extend(texts)
-        print("✅ Documents embedded and indexed.")
+        print(f"✅ {len(texts)} documents indexed.")
 
+    def query(self, text: str, top_k: int = 5) -> list:
+        if self.index is None or self.index.ntotal == 0:
+            raise RuntimeError(
+                "No index loaded. Run 'espn intake --week <N>' first to build the index."
+            )
+        embedding = self.model.encode([text], normalize_embeddings=True).astype("float32")
+        k = min(top_k, self.index.ntotal)
+        scores, indices = self.index.search(embedding, k)
+        return [
+            {"text": self.documents[i], "similarity": float(scores[0][rank])}
+            for rank, i in enumerate(indices[0])
+            if i < len(self.documents)
+        ]
 
+    def save(self):
+        os.makedirs(os.path.dirname(self.index_path), exist_ok=True)
+        faiss.write_index(self.index, self.index_path)
+        with open(self.docs_path, "w") as f:
+            json.dump(self.documents, f, indent=2)
+        print(f"💾 Index saved ({self.index.ntotal} entries) → {self.index_path}")
+
+    def load(self):
+        if not os.path.exists(self.index_path):
+            raise FileNotFoundError(
+                f"No index found at {self.index_path}. "
+                "Run 'espn intake --week <N>' to build one."
+            )
+        self.index = faiss.read_index(self.index_path)
+        with open(self.docs_path) as f:
+            self.documents = json.load(f)
+        print(f"📂 Index loaded — {self.index.ntotal} entries.")

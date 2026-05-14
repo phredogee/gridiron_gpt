@@ -12,13 +12,16 @@
 
 
 import click
-from .espn import espn  # assuming espn.py defines a click group called espn
+from .espn import espn
+from .ask import ask
 
 @click.group()
 def cli():
-    """Main CLI entry point"""
+    """🏈 GridironGPT — fantasy football analytics CLI"""
     pass
+
 cli.add_command(espn)
+cli.add_command(ask)
 
 __all__ = ["cli", "main"]
 
