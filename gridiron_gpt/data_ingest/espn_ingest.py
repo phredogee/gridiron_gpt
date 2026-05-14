@@ -9,6 +9,45 @@ from gridiron_gpt.validators.profile_validator import validate_profile_schema
 RAW_DIR = "data/raw/espn"
 CLEAN_DIR = "data/clean/espn"
 
+# Home stadium surface and environment for all 32 NFL teams (2025 season).
+# surface: "natural grass" | "artificial turf"
+# environment: "outdoor" | "indoor" | "retractable roof"
+STADIUM_INFO = {
+    "ARI": {"surface": "artificial turf",  "environment": "retractable roof"},
+    "ATL": {"surface": "artificial turf",  "environment": "indoor"},
+    "BAL": {"surface": "natural grass",    "environment": "outdoor"},
+    "BUF": {"surface": "natural grass",    "environment": "outdoor"},
+    "CAR": {"surface": "natural grass",    "environment": "outdoor"},
+    "CHI": {"surface": "natural grass",    "environment": "outdoor"},
+    "CIN": {"surface": "artificial turf",  "environment": "outdoor"},
+    "CLE": {"surface": "natural grass",    "environment": "outdoor"},
+    "DAL": {"surface": "artificial turf",  "environment": "retractable roof"},
+    "DEN": {"surface": "natural grass",    "environment": "outdoor"},
+    "DET": {"surface": "artificial turf",  "environment": "indoor"},
+    "GB":  {"surface": "natural grass",    "environment": "outdoor"},
+    "HOU": {"surface": "artificial turf",  "environment": "retractable roof"},
+    "IND": {"surface": "artificial turf",  "environment": "retractable roof"},
+    "JAX": {"surface": "natural grass",    "environment": "outdoor"},
+    "KC":  {"surface": "natural grass",    "environment": "outdoor"},
+    "LAC": {"surface": "natural grass",    "environment": "outdoor"},
+    "LAR": {"surface": "natural grass",    "environment": "outdoor"},
+    "LV":  {"surface": "artificial turf",  "environment": "indoor"},
+    "MIA": {"surface": "natural grass",    "environment": "outdoor"},
+    "MIN": {"surface": "artificial turf",  "environment": "indoor"},
+    "NE":  {"surface": "artificial turf",  "environment": "outdoor"},
+    "NO":  {"surface": "artificial turf",  "environment": "indoor"},
+    "NYG": {"surface": "artificial turf",  "environment": "outdoor"},
+    "NYJ": {"surface": "artificial turf",  "environment": "outdoor"},
+    "PHI": {"surface": "natural grass",    "environment": "outdoor"},
+    "PIT": {"surface": "natural grass",    "environment": "outdoor"},
+    "SEA": {"surface": "artificial turf",  "environment": "outdoor"},
+    "SF":  {"surface": "natural grass",    "environment": "outdoor"},
+    "TB":  {"surface": "natural grass",    "environment": "outdoor"},
+    "TEN": {"surface": "natural grass",    "environment": "outdoor"},
+    "WAS": {"surface": "natural grass",    "environment": "outdoor"},
+}
+
+
 def fetch_espn_data(week: int) -> list:
     """Fetch raw ESPN scoreboard data for a given NFL week."""
     url = f"https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?week={week}&seasontype=2"
@@ -18,7 +57,23 @@ def fetch_espn_data(week: int) -> list:
 
     players = []
     for event in data.get("events", []):
-        for competitor in event["competitions"][0]["competitors"]:
+        competition = event["competitions"][0]
+
+        # Identify home team to determine stadium surface/environment
+        home_abbr = next(
+            (c["team"]["abbreviation"] for c in competition["competitors"]
+             if c.get("homeAway") == "home"),
+            None
+        )
+        stadium = STADIUM_INFO.get(home_abbr, {})
+        surface = stadium.get("surface", "unknown surface")
+        environment = stadium.get("environment", "outdoor")
+
+        # ESPN venue object may override indoor flag
+        if competition.get("venue", {}).get("indoor") and environment == "outdoor":
+            environment = "indoor"
+
+        for competitor in competition["competitors"]:
             team = competitor["team"]["abbreviation"]
             for athlete in competitor.get("athletes", []):
                 players.append({
@@ -26,9 +81,12 @@ def fetch_espn_data(week: int) -> list:
                     "team": team,
                     "week": week,
                     "fantasy_points": athlete.get("stats", [{}])[0].get("value", 0),
-                    "position": athlete.get("position", {}).get("abbreviation", "UNK")
+                    "position": athlete.get("position", {}).get("abbreviation", "UNK"),
+                    "surface": surface,
+                    "environment": environment,
                 })
     return players
+
 
 def clean_espn_data(raw_data: list) -> list:
     """Transform raw ESPN data into validated profile format."""
@@ -41,7 +99,9 @@ def clean_espn_data(raw_data: list) -> list:
             "team": entry["team"],
             "week": entry["week"],
             "fantasy_points": float(entry["fantasy_points"]),
-            "position": entry.get("position", "unknown")
+            "position": entry.get("position", "unknown"),
+            "surface": entry.get("surface", "unknown surface"),
+            "environment": entry.get("environment", "outdoor"),
         })
     print(f"✅ Cleaned {len(cleaned)} player entries")
     return cleaned

@@ -53,9 +53,13 @@ class Advisor:
             week = p.get("week", "?")
             pts = float(p.get("fantasy_points", 0))
             team_name = self._TEAM_NAMES.get(team, team)
+            surface = p.get("surface", "unknown surface")
+            environment = p.get("environment", "outdoor")
+            venue_desc = f"{environment} on {surface}"
             texts.append(
                 f"{name} is a {pos} ({pos_code}) for the {team_name} ({team}), "
-                f"scoring {pts:.1f} fantasy points in week {week}."
+                f"scoring {pts:.1f} fantasy points in week {week}. "
+                f"Game played {venue_desc}."
             )
         self.add_documents(texts)
 
