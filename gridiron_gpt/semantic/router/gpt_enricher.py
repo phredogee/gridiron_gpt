@@ -1,7 +1,7 @@
 # semantic/router/gpt_enricher.py
 
-from semantic.ingestion.espn_ingest import get_player_stats
-from semantic.feedback import banner_success, banner_warn
+from gridiron_gpt.semantic.ingestion.espn_ingest import get_player_stats
+from gridiron_gpt.feedback import success as banner_success, banner_warn
 
 def enrich_prompt(player_name: str, context: str, dry_run: bool = False) -> str:
     stats = get_player_stats(player_name)

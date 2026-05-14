@@ -1,8 +1,8 @@
 # /gridiron_gpt/semantic/espn_ingest.py
 
 from gridiron_gpt.utils.banner_utils import print_banner
-from data_ingest.espn_ingest import fetch_espn_data, clean_espn_data, save_cleaned_data
-from validators.profile_validator import validate_profile_schema
+from gridiron_gpt.data_ingest.espn_ingest import fetch_espn_data, clean_espn_data, save_cleaned_data
+from gridiron_gpt.validators.profile_validator import validate_profile_schema
 
 def ingest_espn_data(week: int, dry_run: bool = False, banner: bool = False):
     if banner:
@@ -36,8 +36,7 @@ def ingest_espn_data(week: int, dry_run: bool = False, banner: bool = False):
     return cleaned_data if dry_run else None
 
 def dry_run_intake(week: int, banner: bool = False):
-    print_banner("🧪 Dry-running ESPN ingest", level="debug") if banner else None
-    # Load and clean data without saving
-    data = _load_espn_data(week)
-    cleaned = _clean_data(data)
+    print_banner("🧪 Dry-running ESPN ingest", level="info") if banner else None
+    data = fetch_espn_data(week)
+    cleaned = clean_espn_data(data)
     print(cleaned)

@@ -2,10 +2,8 @@
 
 import json
 import os
-from semantic.profile_delta import compute_profile_delta
-
-# from semantic.parser import nlp
-from semantic.utils.feedback import banner, success, warning, error
+from .profile_delta import compute_profile_delta
+from gridiron_gpt.feedback import banner, success, warning, error
 
 # 🧠 NLP-powered query router: interprets player queries like "rushing yards for Bijan"
 
@@ -75,17 +73,14 @@ def route_prompt(prompt: str) -> str:
         return "general_gpt"
 
 # 🔁 Semantic ingestion router
-def route_semantic_ingestion(source: str, dry_run=False):
+def route_semantic_ingestion(source: str, identifier=None, profile=None, dry_run=False):
     if dry_run:
-        from semantic.utils.feedback import banner
         banner(f"📥 Simulating ingestion from source: {source}", emoji="🧪")
         return {
             "status": "dry-run",
             "source": source,
             "ingested_records": 0
         }
-
-    # ...live ingestion logic here...
 
     path_map = {
         "espn": f"data/clean/espn/week_{identifier}.json",
@@ -94,11 +89,11 @@ def route_semantic_ingestion(source: str, dry_run=False):
 
     path = path_map.get(source)
     if not path:
-        fail_banner(f"🚫 Unsupported source: {source}")
+        error(f"🚫 Unsupported source: {source}")
         return
 
     if not os.path.exists(path):
-        fail_banner(f"📁 No cleaned data found at {path}")
+        error(f"📁 No cleaned data found at {path}")
         return
 
     banner(f"🧠 Routing {source.upper()} data to semantic modules...")
@@ -107,12 +102,12 @@ def route_semantic_ingestion(source: str, dry_run=False):
         with open(path, "r") as f:
             data = json.load(f)
     except Exception as e:
-        fail_banner(f"❌ Failed to load data: {str(e)}")
+        error(f"❌ Failed to load data: {str(e)}")
         return
 
     if profile:
         delta = compute_profile_delta(data, profile)
-        success_banner(f"✅ Profile delta computed for {profile}")
+        success(f"✅ Profile delta computed for {profile}")
         return delta
 
 def route_matchups(source: str, season: int, league_id: str):

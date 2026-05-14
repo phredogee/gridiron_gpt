@@ -1,5 +1,7 @@
 # validators/profile_validator.py
 
+from gridiron_gpt.feedback import error
+
 REQUIRED_FIELDS = ["profile_id", "team", "week", "fantasy_points"]
 
 def validate_profile(profile):

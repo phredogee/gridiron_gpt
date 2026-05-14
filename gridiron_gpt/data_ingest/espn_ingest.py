@@ -4,7 +4,7 @@ import os
 import json
 import argparse
 import requests
-from validators.profile_validator import validate_profile_schema
+from gridiron_gpt.validators.profile_validator import validate_profile_schema
 
 RAW_DIR = "data/raw/espn"
 CLEAN_DIR = "data/clean/espn"

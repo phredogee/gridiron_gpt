@@ -11,8 +11,10 @@
 └────────────┴───────────────────────────────┘
 '''
 
-from .main import cli, main  # cli() should be defined in main.py
+from .main import cli, main
 from .espn import espn
+from gridiron_gpt.feedback import banner_warn
+from click.testing import CliRunner
 
 cli.add_command(espn)
 
