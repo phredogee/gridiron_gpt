@@ -1,0 +1,1 @@
+from gridiron_gpt.pipelines.semantic_pipeline import SemanticPipeline

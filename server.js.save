@@ -1,0 +1,42 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const ingestRoute = require('./routes/ingest');
+
+const app = express();
+app.use(bodyParser.json());
+
+app.use('/ingest', ingestRoute);
+
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));muress = require('express');
+const bodyParser = require('body-parser');
+const ingestRoute = require('./routes/ingest');
+
+const app = express();
+app.use(bodyParser.json());
+
+app.use('/ingest', ingestRoute);
+
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));const bodyParser = require('body-parser');
+const ingestRoute = require('./routes/ingest');
+
+const app = express();
+app.use(bodyParser.json());
+
+app.use('/ingest', ingestRoute);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));const express = require('express');
+const app = express();
+const PORT = 8000;
+
+app.get('/api/data', (req, res) => {
+  res.json({ message: 'Hello from Verba backend!' });
+});
+
+app.listen(PORT, () => {
+  console.log(`Backend listening on port ${PORT}`);
+});app.listen(8000, () => {
+  console.log('Backend running on port 8000');
+});

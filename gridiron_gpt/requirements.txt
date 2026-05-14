@@ -1,0 +1,13 @@
+certifi==2025.8.3
+charset-normalizer==3.4.3
+click==8.2.1
+idna==3.10
+iniconfig==2.1.0
+packaging==25.0
+-e git+ssh://git@github.com/phredogee/gridiron_gpt.git@6e41d9c25238d9c8cb15b288a32f2d25547fff3a#egg=phred
+pluggy==1.6.0
+Pygments==2.19.2
+pytest==8.4.2
+requests==2.32.5
+urllib3==2.5.0
+xonsh==0.19.9

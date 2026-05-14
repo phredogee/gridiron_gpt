@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zodiac"
+version = "1.0.0"
+description = "CLI tool for zodiac insights"
+authors = [{ name = "Alfredo" }]
+dependencies = []
+
+[project.scripts]
+zodiac = "zodiac.zodiac_cli:main"

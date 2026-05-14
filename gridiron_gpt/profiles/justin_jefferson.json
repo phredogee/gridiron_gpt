@@ -1,0 +1,18 @@
+import json
+from pathlib import Path
+
+profile = {
+    "player": "Justin Jefferson",
+    "team": "MIN",
+    "position": "WR",
+    "stats": {
+        "receptions": 128,
+        "yards": 1809,
+        "touchdowns": 8
+    },
+    "status": "active",
+    "notes": "Elite route runner with top-tier separation skills"
+}
+
+Path("profiles").mkdir(exist_ok=True)
+Path("profiles/justin_jefferson.json").write_text(json.dumps(profile, indent=2))

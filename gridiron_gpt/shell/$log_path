@@ -1,0 +1,107 @@
+$log_line
+$log_line
+[2025-09-20 08:46:07
+] gridiron_launcher.xsh sourced
+[2025-09-20 08:46:09
+] gridiron_launcher.xsh sourced
+[2025-09-20 08:46:13
+] gridiron_launcher.xsh sourced
+[2025-09-20 08:46:15
+] gridiron_launcher.xsh sourced
+[2025-09-20 08:46:20
+] gridiron_launcher.xsh sourced
+[2025-09-20 08:46:21
+] gridiron_launcher.xsh sourced
+[2025-09-20 08:46:26
+] gridiron_launcher.xsh sourced
+[2025-09-20 08:46:28
+] gridiron_launcher.xsh sourced
+[2025-09-20 11:09:18
+] source_helpers.xsh sourced
+[2025-09-20 11:09:19
+] gridiron_launcher.xsh sourced
+[2025-09-20 11:09:20
+] banner.xsh sourced
+[2025-09-20 11:09:21
+] gridiron_launcher.xsh sourced
+[2025-09-20 11:09:22
+] shell_health.xsh sourced
+[2025-09-20 11:09:24
+] source_helpers.xsh sourced
+[2025-09-20 11:09:26
+] gridiron_launcher.xsh sourced
+[2025-09-20 11:09:27
+] banner.xsh sourced
+[2025-09-20 11:09:28
+] gridiron_launcher.xsh sourced
+[2025-09-20 11:09:29
+] shell_health.xsh sourced
+[2025-09-20 11:09:32
+] source_helpers.xsh sourced
+[2025-09-20 11:09:33
+] gridiron_launcher.xsh sourced
+[2025-09-20 11:09:34
+] banner.xsh sourced
+[2025-09-20 11:09:35
+] gridiron_launcher.xsh sourced
+[2025-09-20 11:09:36
+] shell_health.xsh sourced
+[2025-09-20 11:09:38
+] source_helpers.xsh sourced
+[2025-09-20 11:09:40
+] gridiron_launcher.xsh sourced
+[2025-09-20 11:09:41
+] banner.xsh sourced
+[2025-09-20 11:09:42
+] gridiron_launcher.xsh sourced
+[2025-09-20 11:09:43
+] shell_health.xsh sourced
+[2025-09-20 14:03:16
+] shell_health.xsh sourced by phredo
+[2025-09-20 14:03:19
+] env_reset.xsh sourced by phredo
+[2025-09-20 14:03:23
+] diagnostics.xsh sourced by phredo
+[2025-09-20 14:03:26
+] welcome_affirmation.xsh sourced by phredo
+[2025-09-20 14:03:31
+] doctor.xsh sourced by phredo
+[2025-09-20 14:03:35] loader.py sourced by phredo
+[2025-09-20 14:03:37
+] doctor.xsh sourced by phredo
+[2025-09-20 14:03:41
+] pipeline_diagnostics.xsh sourced by phredo
+[2025-09-20 14:41:28
+] shell_health.xsh sourced by phredo
+[2025-09-20 14:41:32
+] env_reset.xsh sourced by phredo
+[2025-09-20 14:41:36
+] diagnostics.xsh sourced by phredo
+[2025-09-20 14:41:40
+] welcome_affirmation.xsh sourced by phredo
+[2025-09-20 14:41:45
+] doctor.xsh sourced by phredo
+[2025-09-20 14:41:49] loader.py sourced by phredo
+[2025-09-20 14:41:51
+] doctor.xsh sourced by phredo
+[2025-09-20 14:41:53
+] pipeline_diagnostics.xsh sourced by phredo
+[2025-09-22 19:14:51
+] Seasonal emoji container selected: summer
+[2025-09-22 19:14:52
+] source_helpers.xsh sourced by phredo
+$log_entry
+[2025-09-22 19:14:55
+] env_reset.xsh sourced by phredo
+$log_entry
+$log_entry
+[2025-09-22 19:14:59
+] welcome_affirmation.xsh sourced by phredo
+$log_entry
+[2025-09-22 19:15:07
+] shell_health.xsh sourced by phredo
+[2025-09-22 19:15:09
+] source_helpers.xsh sourced by phredo
+$log_entry
+[2025-09-22 19:15:13
+] env_reset.xsh sourced by phredo

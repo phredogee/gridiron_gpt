@@ -1,0 +1,20 @@
+# Seasons you want on first bootstrap
+bootstrap_start_season = 2019
+bootstrap_end_season   = 2024
+
+# How many days back to refresh on incremental updates (late stat corrections)
+recent_days = 10
+
+# Paths (relative to repo root)
+data_parquet_dir = "data/nfl/parquet"
+duckdb_path      = "duckdb/nfl.duckdb"
+
+# Tables to load (toggle off if you don't need them)
+[tables]
+schedules   = true
+rosters     = true
+weekly      = true
+season      = true
+pbp         = true
+players     = true
+ids         = true

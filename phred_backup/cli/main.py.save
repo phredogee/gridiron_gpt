@@ -1,0 +1,44 @@
+# phred/cli/main.py
+
+import argparse
+import warnings
+import phred.cli
+
+from phred.cli import fetch, doctor
+from phred.sports.save import save_nfl_events, save_json, save_timestamped
+from phred.sports.fetch import fetch_player_data
+
+warnings.filterwarnings("ignore", category=RuntimeWarning)
+
+def main():
+    parser = argparse.ArgumentParser(description="Run the sports pipeline")
+    parser.add_argument("--verbose", action="store_true", help="Enable verbose output")
+    parser.add_argument("--season", type=str, default="2024", help="NFL season to fetch")
+    parser.add_argument("--dry-run", action="store_true", help="Preview actions without saving")
+    parser.add_argument("--source", type=str, default="espn", help="Data source (espn, nfl_api)")
+    
+    args = parser.parse_args()  # ✅ Parse before using args
+
+    phred.cli.VERBOSE = args.verbose
+
+    print("🚀 Running sports pipeline...")
+    print(f"📅 Fetching NFL events for season: {args.season}")
+
+data = fetch_player_data(season=int(args.season), source=args.source)
+events = data.get("games", [])
+
+if not args.dry_run:
+    save_nfl_events(events)
+    if not args.dry_run:
+        save_nfl_events(events)
+        save_json(events, "data/custom_events.json")
+        save_timestamped(events)
+    else:
+        print("🧪 Dry run: skipping saves")
+
+    run_fetch()
+    run_merge()
+    run_save()
+
+if __name__ == "__main__":
+    main()

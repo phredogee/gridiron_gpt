@@ -1,0 +1,6 @@
+# 🍂 Fall Emoji Palette
+env['EMOJI_CHECK'] = "🍁"
+env['EMOJI_SUCCESS'] = "🧣"
+env['EMOJI_FAIL'] = "🪦"
+env['EMOJI_WARN'] = "🦃"
+env['EMOJI_TRACE'] = "🕸️"

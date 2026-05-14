@@ -1,0 +1,280 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.2, pytest-7.4.4, pluggy-1.6.0 -- /home/phredo/phredenv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/phredo/projects/my_project
+plugins: xonsh-0.19.9, anyio-4.10.0
+collecting ... collected 14 items / 20 errors
+
+==================================== ERRORS ====================================
+_________________ ERROR collecting gridiron_gpt/test_import.py _________________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/test_import.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/test_import.py:2: in <module>
+    from phred.cli.utils.feedback import banner
+E   ModuleNotFoundError: No module named 'phred.cli.utils'
+________ ERROR collecting gridiron_gpt/phred/cli/test_registry_test.py _________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/phred/cli/test_registry_test.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/phred/cli/__init__.py:35: in <module>
+    _import_cli_modules()
+gridiron_gpt/phred/cli/__init__.py:29: in _import_cli_modules
+    importlib.import_module(f"{__name__}.{modname}")
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/phred/cli/__main__.py:1: in <module>
+    from phred.cli.registry import expose_cli
+E   ImportError: cannot import name 'expose_cli' from 'phred.cli.registry' (/home/phredo/projects/my_project/phred/cli/registry.py)
+------------------------------- Captured stdout --------------------------------
+
+🧠 Command registry not found — CLI commands may be unavailable
+
+⚠️ Skipping semantic hook: No module named 'phred.cli.utils'
+Importing CLI module: __main__
+___________ ERROR collecting gridiron_gpt/phred/cli/test_rigistry.py ___________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/phred/cli/test_rigistry.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/phred/cli/__init__.py:35: in <module>
+    _import_cli_modules()
+gridiron_gpt/phred/cli/__init__.py:29: in _import_cli_modules
+    importlib.import_module(f"{__name__}.{modname}")
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/phred/cli/__main__.py:1: in <module>
+    from phred.cli.registry import expose_cli
+E   ImportError: cannot import name 'expose_cli' from 'phred.cli.registry' (/home/phredo/projects/my_project/phred/cli/registry.py)
+------------------------------- Captured stdout --------------------------------
+⚠️ Skipping semantic hook: No module named 'phred.cli.utils'
+Importing CLI module: __main__
+________ ERROR collecting gridiron_gpt/phred/utils/test_banner_utils.py ________
+gridiron_gpt/phred/utils/test_banner_utils.py:8: in <module>
+    if kind not in emojis:
+E   NameError: name 'kind' is not defined
+_______________ ERROR collecting gridiron_gpt/tests/test_cli.py ________________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/test_cli.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/test_cli.py:1: in <module>
+    from phred.sports.fetchers.espn import fetch_from_espn
+phred/sports/fetchers/espn.py:3: in <module>
+    from phred.cli.utils.feedback import banner
+E   ModuleNotFoundError: No module named 'phred.cli.utils'
+_____________ ERROR collecting gridiron_gpt/tests/test_cli_espn.py _____________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/test_cli_espn.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/test_cli_espn.py:1: in <module>
+    from phred.cli.espn import fetch_espn_data
+E   ModuleNotFoundError: No module named 'phred.cli.espn'
+___________ ERROR collecting gridiron_gpt/tests/test_cli_ranking.py ____________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/test_cli_ranking.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/test_cli_ranking.py:1: in <module>
+    from phred.cli.ranking import generate_rankings
+E   ModuleNotFoundError: No module named 'phred.cli.ranking'
+__________ ERROR collecting gridiron_gpt/tests/test_espn_pipeline.py ___________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/test_espn_pipeline.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/test_espn_pipeline.py:3: in <module>
+    from phred.sports.fetchers.espn.intake import fetch_from_espn
+phred/sports/fetchers/espn.py:3: in <module>
+    from phred.cli.utils.feedback import banner
+E   ModuleNotFoundError: No module named 'phred.cli.utils'
+_____________ ERROR collecting gridiron_gpt/tests/test_feedback.py _____________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/test_feedback.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/test_feedback.py:1: in <module>
+    from phred.feedback import banner, feedback_context
+gridiron_gpt/phred/feedback.py:1: in <module>
+    from phred.utils.banner_utils import banner, feedback_context
+E   ImportError: cannot import name 'feedback_context' from 'phred.utils.banner_utils' (/home/phredo/projects/my_project/gridiron_gpt/phred/utils/banner_utils.py)
+____________ ERROR collecting gridiron_gpt/tests/test_ingestion.py _____________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/test_ingestion.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/test_ingestion.py:2: in <module>
+    from phred.semantic.ingestion import route_semantic_ingestion
+E   ModuleNotFoundError: No module named 'phred.semantic.ingestion'
+------------------------------- Captured stdout --------------------------------
+🧠 Semantic audit module initialized
+_____________ ERROR collecting gridiron_gpt/tests/test_pipeline.py _____________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/test_pipeline.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/test_pipeline.py:2: in <module>
+    from pipelines.ranking_pipeline import run_pipeline_logic
+gridiron_gpt/pipelines/ranking_pipeline.py:3: in <module>
+    from phred.sports.fetchers.espn.fetch import fetch_from_espn
+phred/sports/fetchers/espn.py:3: in <module>
+    from phred.cli.utils.feedback import banner
+E   ModuleNotFoundError: No module named 'phred.cli.utils'
+_________ ERROR collecting gridiron_gpt/tests/test_profile_builder.py __________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/test_profile_builder.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/test_profile_builder.py:3: in <module>
+    from phredenv.semantic.profile_builder import build_player_profile
+gridiron_gpt/phredenv/__init__.py:5: in <module>
+    from .loader import init_phredenv
+E   ModuleNotFoundError: No module named 'phredenv.loader'
+___________ ERROR collecting gridiron_gpt/tests/test_semantic_cli.py ___________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/test_semantic_cli.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/test_semantic_cli.py:3: in <module>
+    from phred.cli.semantic_cli import run_semantic_cli
+E   ModuleNotFoundError: No module named 'phred.cli.semantic_cli'
+_________ ERROR collecting gridiron_gpt/tests/test_semantic_doctor.py __________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/test_semantic_doctor.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/test_semantic_doctor.py:1: in <module>
+    from phred.cli.doctor import semantic_diagnose
+E   ModuleNotFoundError: No module named 'phred.cli.doctor'
+__________ ERROR collecting gridiron_gpt/tests/test_semantic_index.py __________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/test_semantic_index.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/test_semantic_index.py:1: in <module>
+    from phred.semantic.index import patch_index, validate_index
+E   ImportError: cannot import name 'patch_index' from 'phred.semantic.index' (/home/phredo/projects/my_project/gridiron_gpt/phred/semantic/index.py)
+_________ ERROR collecting gridiron_gpt/tests/test_semantic_ingest.py __________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/test_semantic_ingest.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/test_semantic_ingest.py:1: in <module>
+    from phred.semantic.ingest import ingest_data
+E   ModuleNotFoundError: No module named 'phred.semantic.ingest'
+___________ ERROR collecting gridiron_gpt/tests/cli/test_feedback.py ___________
+../../phredenv/lib/python3.11/site-packages/_pytest/python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+../../phredenv/lib/python3.11/site-packages/_pytest/pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1206: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1178: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1149: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:690: in _load_unlocked
+    ???
+../../phredenv/lib/python3.11/site-packages/_pytest/assertion/rewrite.py:177: in exec_module
+    source_stat, co = _rewrite_test(fn, self.config)
+../../phredenv/lib/python3.11/site-packages/_pytest/assertion/rewrite.py:359: in _rewrite_test
+    tree = ast.parse(source, filename=strfn)
+/usr/lib/python3.11/ast.py:50: in parse
+    return compile(source, filename, mode, flags,
+E     File "/home/phredo/projects/my_project/gridiron_gpt/tests/cli/test_feedback.py", line 12
+E       @pytest.mark.parametrize("level, icon", [
+E                                                ^
+E   IndentationError: unindent does not match any outer indentation level
+________ ERROR collecting gridiron_gpt/tests/doctor/test_diagnostics.py ________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/doctor/test_diagnostics.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/doctor/test_diagnostics.py:3: in <module>
+    from phred.sports.doctor import diagnose_espn_fetch
+E   ModuleNotFoundError: No module named 'phred.sports.doctor'
+_________ ERROR collecting gridiron_gpt/tests/fetch/test_espn_fetch.py _________
+ImportError while importing test module '/home/phredo/projects/my_project/gridiron_gpt/tests/fetch/test_espn_fetch.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+gridiron_gpt/tests/fetch/test_espn_fetch.py:3: in <module>
+    from phred.sports.fetchers.espn.fetch import get_all_player_ids, fetch_from_espn
+phred/sports/fetchers/espn.py:3: in <module>
+    from phred.cli.utils.feedback import banner
+E   ModuleNotFoundError: No module named 'phred.cli.utils'
+_____________________ ERROR collecting tests/test_query.py _____________________
+ImportError while importing test module '/home/phredo/projects/my_project/tests/test_query.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/test_query.py:1: in <module>
+    from project_gridiron_gpt.core.advisor import Advisor
+E   ModuleNotFoundError: No module named 'project_gridiron_gpt.core'
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+../../phredenv/lib/python3.11/site-packages/transformers/utils/generic.py:441
+  /home/phredo/phredenv/lib/python3.11/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+    _torch_pytree._register_pytree_node(
+
+../../phredenv/lib/python3.11/site-packages/transformers/utils/generic.py:309
+  /home/phredo/phredenv/lib/python3.11/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+    _torch_pytree._register_pytree_node(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR gridiron_gpt/test_import.py
+ERROR gridiron_gpt/phred/cli/test_registry_test.py
+ERROR gridiron_gpt/phred/cli/test_rigistry.py
+ERROR gridiron_gpt/phred/utils/test_banner_utils.py - NameError: name 'kind' ...
+ERROR gridiron_gpt/tests/test_cli.py
+ERROR gridiron_gpt/tests/test_cli_espn.py
+ERROR gridiron_gpt/tests/test_cli_ranking.py
+ERROR gridiron_gpt/tests/test_espn_pipeline.py
+ERROR gridiron_gpt/tests/test_feedback.py
+ERROR gridiron_gpt/tests/test_ingestion.py
+ERROR gridiron_gpt/tests/test_pipeline.py
+ERROR gridiron_gpt/tests/test_profile_builder.py
+ERROR gridiron_gpt/tests/test_semantic_cli.py
+ERROR gridiron_gpt/tests/test_semantic_doctor.py
+ERROR gridiron_gpt/tests/test_semantic_index.py
+ERROR gridiron_gpt/tests/test_semantic_ingest.py
+ERROR gridiron_gpt/tests/cli/test_feedback.py
+ERROR gridiron_gpt/tests/doctor/test_diagnostics.py
+ERROR gridiron_gpt/tests/fetch/test_espn_fetch.py
+ERROR tests/test_query.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 20 errors during collection !!!!!!!!!!!!!!!!!!!
+======================= 7 warnings, 20 errors in 10.20s ========================

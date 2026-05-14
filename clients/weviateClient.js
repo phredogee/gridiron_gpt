@@ -1,0 +1,3 @@
+const { normalizeEmbedding } = require('../utils/embeddingFormat');
+// ...
+const cleanVector = normalizeEmbedding(vector);

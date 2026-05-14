@@ -1,0 +1,17 @@
+return affirmations.get(sign, affirmations.get("Unknown"))
+
+{
+  "Rat": "I trust my clever instincts and adapt with ease.",
+  "Ox": "I move with quiet strength and build lasting foundations.",
+  "Tiger": "I lead boldly and protect those I love.",
+  "Rabbit": "I nurture peace and bring calm to every space.",
+  "Dragon": "I radiate confidence and inspire transformation.",
+  "Snake": "I act with wisdom and speak with clarity.",
+  "Horse": "I run free toward my purpose with joy.",
+  "Goat": "I create beauty and offer empathy without limits.",
+  "Monkey": "I solve problems playfully and spark innovation.",
+  "Rooster": "I rise early with purpose and precision.",
+  "Dog": "I remain loyal and uplift others with honesty.",
+  "Pig": "I give generously and receive abundance with grace."
+  "Unknown": "🌙 Trust your instincts today. Your path is unfolding beautifully."
+}

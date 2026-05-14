@@ -1,0 +1,20 @@
+# source_core.xsh — Defensive sourcing utilities
+import os
+from datetime import datetime
+
+env = __xonsh__.env
+
+if '__SOURCE_CORE_LOADED__' not in env:
+    env['__SOURCE_CORE_LOADED__'] = '1'
+
+    def source_safe(path):
+        """Safely source a file with emoji diagnostics and contributor logging."""
+        if os.path.isfile(path):
+            try:
+                execx(f"source {path}")
+                print(f"📦 Sourced safely → {path}")
+                log_source_safe(path)
+            except Exception as e:
+                print(f"❌ Failed to source {path}: {e}")
+        else:
+            print(f"⚠️ Missing or invalid file → {path}")

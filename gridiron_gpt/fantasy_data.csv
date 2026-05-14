@@ -1,0 +1,4 @@
+position,opponent_defense_rank,weather,week,action,position_enc,weather_enc
+RB,28,clear,1,start,1,0
+WR,2,rainy,3,sit,2,2
+QB,15,cloudy,2,start,0,1

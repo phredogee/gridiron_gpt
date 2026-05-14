@@ -1,0 +1,34 @@
+# gridiron_gpt/shell/source_log.xsh — GridIron GPT Shell Source Logger
+
+from datetime import datetime
+import os
+
+# 🧠 Source log path
+source_log_path = os.path.expanduser("~/projects/my_project/gridiron_gpt/logs/source_log.txt")
+
+# 🧠 Session header (only once per session)
+if '__SOURCE_LOG_SESSION_HEADER__' not in __xonsh__.env:
+    session_start = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open(source_log_path, "a") as f:
+        print(f"🧠 New session started at: {session_start}", file=f)
+        print("══════════════════════════════════════════════════════", file=f)
+    __xonsh__.env['__SOURCE_LOG_SESSION_HEADER__'] = '1'
+
+# 🧹 Clear source log
+print("🧹 Clearing source log...")
+with open(source_log_path, "w") as f:
+    print("✅ Log cleared.", file=f)
+
+# 🧠 Example log entries
+timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+status = "✅"
+label = "example-module"
+path = "~/projects/my_project/gridiron_gpt/shell/example.xsh"
+resolved_path = os.path.expanduser(path)
+
+log_entry = f"[{timestamp}] {status} {label} (module): {resolved_path}"
+
+# 🔁 Write multiple entries
+with open(source_log_path, "a") as f:
+    for _ in range(30):  # Adjust count as needed
+        print(log_entry, file=f)

@@ -1,0 +1,11 @@
+[2025-09-16 18:58:28] ✅ Sourcing Utilities: /home/phredo/projects/my_project/gridiron_gpt/shell/source_helpers.xsh
+[2025-09-16 18:58:28] ✅ Env Reset: /home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh
+[2025-09-16 18:58:29] ✅ Diagnostics: /home/phredo/projects/my_project/gridiron_gpt/shell/diagnostics.xsh
+[2025-09-16 18:58:29] ✅ Contributor Welcome: /home/phredo/projects/my_project/gridiron_gpt/shell/welcome_affirmation.xsh
+[2025-09-16 18:58:30] ✅ Doctor Diagnostics: /home/phredo/projects/my_project/gridiron_gpt/shell/doctor.xsh
+[2025-09-16 18:58:32] ✅ Env Reset: /home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh
+[2025-09-16 18:58:32] ✅ Diagnostics: /home/phredo/projects/my_project/gridiron_gpt/shell/diagnostics.xsh
+[2025-09-16 18:58:33] ✅ Contributor Welcome: /home/phredo/projects/my_project/gridiron_gpt/shell/welcome_affirmation.xsh
+[2025-09-16 18:58:38] ✅ Shell Health: /home/phredo/projects/my_project/gridiron_gpt/shell/shell_health.xsh
+[2025-09-16 18:58:39] ✅ Doctor Diagnostics: /home/phredo/projects/my_project/gridiron_gpt/shell/doctor.xsh
+[2025-09-16 18:58:40] ❌ NFL Pipeline Diagnostics: /home/phredo/projects/my_project/gridiron_gpt/shell/pipeline_diagnostics.xsh

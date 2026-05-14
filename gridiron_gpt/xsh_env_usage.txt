@@ -1,0 +1,283 @@
+/home/phredo/projects/my_project/gridiron_gpt/banner/banner.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/banner/banner.xsh:home_dir = __xonsh__.env["HOME"] if "HOME" in __xonsh__.env else "/home/phredo"
+/home/phredo/projects/my_project/gridiron_gpt/banner/banner.xsh:print("🧠 CLI v0.1.1 | Registry: ✅ phred | Shell: ✅ phredenv")
+/home/phredo/projects/my_project/gridiron_gpt/banner/banner.xsh:if 'GRIDIRON_SESSION_STARTED' not in env:
+/home/phredo/projects/my_project/gridiron_gpt/banner/banner.xsh:    env['GRIDIRON_SESSION_STARTED'] = True
+/home/phredo/projects/my_project/gridiron_gpt/banner/banner.xsh:if '__GRIDIRON_BANNER_SHOWN__' not in env:
+/home/phredo/projects/my_project/gridiron_gpt/banner/banner.xsh:    env['__GRIDIRON_BANNER_SHOWN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome.xsh:if env.get('GRIDIRON_SESSION_STARTED'):
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome.xsh:if env.get('GRIDIRON_SESSION_STARTED'):
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome.xsh:env['__GRIDIRON_WELCOME_RENDERED__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome.xsh:user = $USER if 'USER' in env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome.xsh:log_path = log_path.replace("~", env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome.xsh:print(f"🩺 Shell:    ✅ phredenv (xonsh {XONSH_VERSION})")
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome.xsh:print("📘 Tip: Type phred-reset to reload your environment.")
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome_affirmation.xsh:if '__GRIDIRON_AFFIRMATION_SHOWN__' in env and env['__GRIDIRON_AFFIRMATION_SHOWN__']:
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome_affirmation.xsh:    env['__GRIDIRON_AFFIRMATION_SHOWN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome_affirmation.xsh:env['GRIDIRON_SESSION_STARTED'] = True
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome_affirmation.xsh:if env.get('GRIDIRON_SESSION_STARTED'):
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome_affirmation.xsh:user = $USER if 'USER' in env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/banner/welcome_affirmation.xsh:log_path = log_path.replace("~", env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/diagnostics.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/diagnostics.xsh:if '__GRIDIRON_DIAGNOSTICS_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/diagnostics.xsh:__xonsh__.env['__GRIDIRON_DIAGNOSTICS_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/diagnostics.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/diagnostics.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/diagnostics.xsh:echo "║ Logs shell health, sourcing order, and env state   ║"
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/diagnostics.xsh:if 'VIRTUAL_ENV' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/diagnostics.xsh:    echo f"📦 Virtual environment: { $VIRTUAL_ENV }"
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/diagnostics.xsh:    echo "📦 Virtual environment: ❌ Not active"
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health.xsh:if 'GRIDIRON_SESSION_STARTED' in env and env['GRIDIRON_SESSION_STARTED']:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health.xsh:if '__GRIDIRON_HEALTH_CHECKED__' not in env:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health.xsh:    env['__GRIDIRON_HEALTH_CHECKED__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health.xsh:user = env.get('USER', 'unknown')
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health.xsh:echo "║ Validates folders, env vars, and shell metadata    ║"
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health.xsh:    if guard_var and guard_var in env:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health.xsh:source_if_valid("~/projects/my_project/gridiron_gpt/shell/env_reset.xsh", "Env Reset")
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health.xsh:loader_path = os.path.expanduser("~/projects/my_project/gridiron_gpt/phredenv/loader.py")
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health_summary.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health_summary.xsh:if '__GRIDIRON_HEALTH_SUMMARY_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health_summary.xsh:__xonsh__.env['__GRIDIRON_HEALTH_SUMMARY_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health_summary.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health_summary.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/health_summary.xsh:    path = path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/phredenv-diagnostics.xsh:# gridiron_gpt/shell/phredenv-diagnostics.xsh
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/phredenv-diagnostics.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/phredenv-diagnostics.xsh:    echo "🛡️ Session already started — skipping phredenv-diagnostics.xsh."
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/phredenv-diagnostics.xsh:if '__PHREDENV_DIAGNOSTICS_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/phredenv-diagnostics.xsh:    echo "🧪 Phredenv diagnostics already sourced — skipping."
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/phredenv-diagnostics.xsh:__xonsh__.env['__PHREDENV_DIAGNOSTICS_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/phredenv-diagnostics.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/phredenv-diagnostics.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/phredenv-diagnostics.xsh:echo f"[{timestamp}] phredenv-diagnostics.xsh sourced by {user}" >> $log_path
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/phredenv-diagnostics.xsh:echo "║ 🧪 GridIron GPT — Phredenv Diagnostics Loader      ║"
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/phredenv-diagnostics.xsh:echo "✅ Phredenv diagnostics sourced. Shell health modules are active."
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/pipeline_diagnostics.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/pipeline_diagnostics.xsh:if '__NFL_DIAGNOSTICS_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/pipeline_diagnostics.xsh:__xonsh__.env['__NFL_DIAGNOSTICS_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/pipeline_diagnostics.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/pipeline_diagnostics.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/pipeline_diagnostics.xsh:config_path = config_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/pipeline_diagnostics.xsh:if 'NFL_API_KEY' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/pipeline_diagnostics.xsh:data_path = data_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/session_flags.xsh:if 'GRIDIRON_SESSION_STARTED' not in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/session_flags.xsh:if '__SHELL_HEALTH_CHECK_RUN__' not in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/session_flags.xsh:    __xonsh__.env['__SHELL_HEALTH_CHECK_RUN__'] = '0'
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/session_flags.xsh:if '__GRIDIRON_LAUNCHER_RUN__' not in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/diagnostics/session_flags.xsh:    __xonsh__.env['__GRIDIRON_LAUNCHER_RUN__'] = '0'
+/home/phredo/projects/my_project/gridiron_gpt/emoji/emoji_palette.xsh:# ~/.config/phredenv/emoji/emoji_palette.xsh — Seasonal Emoji Palette
+/home/phredo/projects/my_project/gridiron_gpt/emoji/emoji_palette.xsh:emoji_path = os.path.expanduser("~/.config/phredenv/emoji/emoji_palette.xsh")
+/home/phredo/projects/my_project/gridiron_gpt/emoji/emoji_palette.xsh:    if '__emoji_palette_missing__' not in env:
+/home/phredo/projects/my_project/gridiron_gpt/emoji/emoji_palette.xsh:        env['__emoji_palette_missing__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/emoji/emoji_palette.xsh:if '__GRIDIRON_EMOJI_LOADED__' in env:
+/home/phredo/projects/my_project/gridiron_gpt/emoji/emoji_palette.xsh:env['__GRIDIRON_EMOJI_LOADED__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/emoji/emoji_palette.xsh:env['GRIDIRON_SESSION_STARTED'] = True
+/home/phredo/projects/my_project/gridiron_gpt/emoji/emoji_palette.xsh:if env.get('GRIDIRON_SESSION_STARTED'):
+/home/phredo/projects/my_project/gridiron_gpt/emoji/emoji_palette.xsh:env['GRIDIRON_EMOJIS'] = [
+/home/phredo/projects/my_project/gridiron_gpt/emoji/emoji_palette.xsh:PROJECT_ROOT = os.path.join(env["HOME"], "projects", "my_project", "gridiron_gpt")
+/home/phredo/projects/my_project/gridiron_gpt/env/env.xsh:# env.xsh 🌤️
+/home/phredo/projects/my_project/gridiron_gpt/env/env.xsh:if 'PHRED_PROJECT_ROOT' not in env:
+/home/phredo/projects/my_project/gridiron_gpt/env/env.xsh:    env['PHRED_PROJECT_ROOT'] = "/home/phredo/projects/my_project/gridiron_gpt"
+/home/phredo/projects/my_project/gridiron_gpt/env/env.xsh:project_root = env['PHRED_PROJECT_ROOT']
+/home/phredo/projects/my_project/gridiron_gpt/env/env.xsh:vars_path = f"{project_root}/phredenv/vars.xsh"
+/home/phredo/projects/my_project/gridiron_gpt/env/env.xsh:health_path = f"{project_root}/phredenv/health.xsh"
+/home/phredo/projects/my_project/gridiron_gpt/env/env.xsh:if 'PHRED_ENV_LOADED' not in env:
+/home/phredo/projects/my_project/gridiron_gpt/env/env.xsh:    env['PHRED_ENV_LOADED'] = True
+/home/phredo/projects/my_project/gridiron_gpt/env/phredenv-status.xsh:# env/phredenv-status.xsh
+/home/phredo/projects/my_project/gridiron_gpt/env/phredenv-status.xsh:# 📦 phredenv Status Module — Contributor Affirmation
+/home/phredo/projects/my_project/gridiron_gpt/env/phredenv-status.xsh:echo "📦 phredenv status sourced — environment confirmed."
+/home/phredo/projects/my_project/gridiron_gpt/env/phredenv-status.xsh:if not $__phredenv_status_sourced__:
+/home/phredo/projects/my_project/gridiron_gpt/env/phredenv-status.xsh:    $__phredenv_status_sourced__ = True
+/home/phredo/projects/my_project/gridiron_gpt/env/phredenv-status.xsh:        echo f"🧼 Virtual environment active → {$VIRTUAL_ENV}"
+/home/phredo/projects/my_project/gridiron_gpt/env/phredenv-status.xsh:        echo "⚠️ No virtual environment detected — contributors may need to activate one."
+/home/phredo/projects/my_project/gridiron_gpt/env/phredenv-status.xsh:# ✅ End of phredenv-status.xsh
+/home/phredo/projects/my_project/gridiron_gpt/gridiron_startup.xsh:if '__GRIDIRON_LAUNCHER_RUN__' not in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/gridiron_startup.xsh:    __xonsh__.env['__GRIDIRON_LAUNCHER_RUN__'] = True
+/home/phredo/projects/my_project/gridiron_gpt/gridiron_startup.xsh:    echo "🚀 Launching GridIron CLI environment..."
+/home/phredo/projects/my_project/gridiron_gpt/gridiron_startup.xsh:    source-xonsh ~/projects/my_project/gridiron_gpt/shell/env_reset.xsh
+/home/phredo/projects/my_project/gridiron_gpt/gridiron_startup.xsh:    source-xonsh ~/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh
+/home/phredo/projects/my_project/gridiron_gpt/helpers/source_helpers.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/helpers/source_helpers.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/helpers/source_helpers.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/helpers/source_helpers.xsh:if '__GRIDIRON_LAUNCHER_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/helpers/source_helpers.xsh:__xonsh__.env['__GRIDIRON_LAUNCHER_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/helpers/source_helpers.xsh:    path = path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/helpers/source_helpers.xsh:        log_path = __xonsh__.env["HOME"] + "/projects/my_project/gridiron_gpt/shell/source_log.txt"
+/home/phredo/projects/my_project/gridiron_gpt/helpers/source_helpers.xsh:source_if_valid("~/projects/my_project/gridiron_gpt/shell/env_reset.xsh", "Env Reset", "__GRIDIRON_ENV_RESET_RUN__")
+/home/phredo/projects/my_project/gridiron_gpt/legacy/emoji_palette_old.xsh:    "🧧",  # Red envelope
+/home/phredo/projects/my_project/gridiron_gpt/legacy/emoji_palette_old.xsh:    "🧧",  # Red envelope
+/home/phredo/projects/my_project/gridiron_gpt/legacy/emoji_palette_old.xsh:log_path = __xonsh__.env["HOME"] + "/projects/my_project/gridiron_gpt/logs/source_trace.log"
+/home/phredo/projects/my_project/gridiron_gpt/loaders/registry.xsh:source_loader("gridiron_gpt/phredenv/loader.py", "Phredenv Loader")
+/home/phredo/projects/my_project/gridiron_gpt/phred/onboarding/phred_aliases.xsh:env['GRIDIRON_SESSION_STARTED'] = True
+/home/phredo/projects/my_project/gridiron_gpt/phred/onboarding/phred_aliases.xsh:if env.get('GRIDIRON_SESSION_STARTED'):
+/home/phredo/projects/my_project/gridiron_gpt/phred/onboarding/shell/banner.xsh:# │ 🩺 Shell:    ✅ phredenv $(xonsh --version)│
+/home/phredo/projects/my_project/gridiron_gpt/phred/onboarding/shell/banner.xsh:echo "🩺 Shell:    ✅ phredenv (xonsh $(xonsh --version))"
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/alias_registry.xsh:#phredenv/alias_registry.xsh
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/alias_registry.xsh:# ┃ 🎭 Alias Registry — phredenv/alias_registry.xsh       ┃
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/health.xsh:# ┃ 🩺 GridIron GPT Shell Health Check — phredenv     ┃
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/health.xsh:print(f"📦 Virtual Environment: {os.environ.get('VIRTUAL_ENV', '❌ Not set')}")
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/lib/python3.11/site-packages/xonsh/virtualenv/activate.xsh:"""Xonsh activate script for virtualenv"""
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/lib64/python3.11/site-packages/xonsh/virtualenv/activate.xsh:"""Xonsh activate script for virtualenv"""
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:# ~/projects/my_project/gridiron_gpt/phredenv/reset.xsh 🪄
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:    print("🔧 Starting phredenv reset diagnostics...")
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:    temp_dir = os.path.join(PROJECT_ROOT, "phredenv", "temp")
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:    core_modules = ["env.xsh", "health.xsh", "vars.xsh"]
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:        mod_path = os.path.join(PROJECT_ROOT, "phredenv", mod)
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:    # │ 🧭 Validate environment variables           │
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:        if var in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:            print(f"✅ Env var set → {var} = {__xonsh__.env[var]}")
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:if 'PROJECT_ROOT' not in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:    __xonsh__.env['PROJECT_ROOT'] = '/home/phredo/projects/my_project/gridiron_gpt'
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:    print(f"📁 PROJECT_ROOT not set. Using default: {__xonsh__.env['PROJECT_ROOT']}")
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:PROJECT_ROOT = __xonsh__.env['PROJECT_ROOT']
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:folders = ['shell', 'phredenv', 'modules']
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:print(f"📦 Sourcing env.xsh from: {os.path.join(PROJECT_ROOT, 'phredenv/env.xsh')}")
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:execx(f"source {os.path.join(PROJECT_ROOT, 'phredenv/env.xsh')}")
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:execx(f"source {os.path.join(PROJECT_ROOT, 'phredenv/health.xsh')}")
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:print("🔄 Resetting phred environment...")
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/reset.xsh:rc_path = rc_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/source_guard.xsh:# ┃ 🛡️ Source Guard — phredenv/source_guard.xsh            ┃
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/vars.xsh:# phredenv/vars.xsh
+/home/phredo/projects/my_project/gridiron_gpt/phredenv/vars.xsh:if not __xonsh__.env.get("PHRED_ENV_LOADED", False):
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:# phredenv_loader.xsh
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:source_safe(f"{PROJECT_ROOT}/env/phredenv-status.xsh")
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:if '__phredenv_status_sourced__' not in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:    $__phredenv_status_sourced__ = False
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:if not $__phredenv_status_sourced__:
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:    source-safe ./env/phredenv-status.xsh
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:if '__PHREDENV_LOADED__' not in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:    __xonsh__.env['__PHREDENV_LOADED__'] = True
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:    echo "🔧 phredenv loader sourced"
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:    __xonsh__.env['GRIDIRON_MODE'] = __xonsh__.env.get('GRIDIRON_MODE', 'dev')
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:    user = __xonsh__.env.get("USER", "unknown")
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:    log_path = __xonsh__.env["HOME"] + "/projects/my_project/gridiron_gpt/logs/source_trace.log"
+/home/phredo/projects/my_project/gridiron_gpt/phredenv_loader.xsh:    echo f"[{timestamp}] phredenv_loader.xsh sourced by {user}" >> $log_path
+/home/phredo/projects/my_project/gridiron_gpt/pipeline_check.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/pipeline_check.xsh:if '__PIPELINE_CHECK_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/pipeline_check.xsh:__xonsh__.env['__PIPELINE_CHECK_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/pipeline_check.xsh:user = __xonsh__.env.get("USER", "unknown")
+/home/phredo/projects/my_project/gridiron_gpt/pipeline_check.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/pipeline_check.xsh:config_path = config_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/pipeline_check.xsh:if 'NFL_API_KEY' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/pipeline_check.xsh:data_path = data_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/pipeline_diagnostics.xsh:    if '__PIPELINE_DIAGNOSTICS_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/pipeline_diagnostics.xsh:    __xonsh__.env['__PIPELINE_DIAGNOSTICS_RUN__'] = True
+/home/phredo/projects/my_project/gridiron_gpt/pipeline_diagnostics.xsh:    user = __xonsh__.env.get("USER", "unknown")
+/home/phredo/projects/my_project/gridiron_gpt/pipeline_diagnostics.xsh:    log_path = __xonsh__.env["HOME"] + "/projects/my_project/gridiron_gpt/logs/pipeline_diagnostics.log"
+/home/phredo/projects/my_project/gridiron_gpt/shell/contributor_launcher.xsh:if '__CONTRIBUTOR_LAUNCHER_RUN__' not in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/shell/contributor_launcher.xsh:    __xonsh__.env['__CONTRIBUTOR_LAUNCHER_RUN__'] = True
+/home/phredo/projects/my_project/gridiron_gpt/shell/contributor_launcher.xsh:    source_if_valid("~/projects/my_project/gridiron_gpt/shell/env_reset.xsh", "env_reset")
+/home/phredo/projects/my_project/gridiron_gpt/shell/contributor_launcher.xsh:    source_if_valid("~/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh", "phredenv-loader")
+/home/phredo/projects/my_project/gridiron_gpt/shell/contributor_launcher.xsh:    source_if_valid("~/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh", "phredenv-status")
+/home/phredo/projects/my_project/gridiron_gpt/shell/doctor.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/shell/doctor.xsh:if '__SHELL_DIAGNOSTICS_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/shell/doctor.xsh:__xonsh__.env['__SHELL_DIAGNOSTICS_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/shell/doctor.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/shell/doctor.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/doctor.xsh:echo "║ Runs one-time shell diagnostics and confirms env   ║"
+/home/phredo/projects/my_project/gridiron_gpt/shell/doctor.xsh:# 📦 Virtual environment status
+/home/phredo/projects/my_project/gridiron_gpt/shell/doctor.xsh:if 'VIRTUAL_ENV' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/shell/doctor.xsh:    echo f"📦 Virtual environment: {$VIRTUAL_ENV}"
+/home/phredo/projects/my_project/gridiron_gpt/shell/doctor.xsh:    echo "📦 Virtual environment: ❌ Not active"
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:# gridiron_gpt/shell/env_reset.xsh — GridIron GPT Environment Reset Module
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:    echo "🛡️ Session already started — skipping env_reset.xsh."
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:if '__GRIDIRON_ENV_RESET_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:__xonsh__.env['__GRIDIRON_ENV_RESET_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:echo f"[{timestamp}] env_reset.xsh sourced by {user}" >> $log_path
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:# 🕒 Timestamp and user for env_reset-specific log
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:env_log_path = "~/projects/my_project/gridiron_gpt/logs/env_reset.log"
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:env_log_path = env_log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:echo f"[{timestamp}] Environment reset triggered by {user}" >> $env_log_path
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:echo "🔄 Resetting shell environment..."
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:__xonsh__.env.pop('__SHELL_HEALTH_CHECK_RUN__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:__xonsh__.env.pop('__SHELL_DIAGNOSTICS_RUN__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:__xonsh__.env.pop('__GRIDIRON_BANNER_RUN__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:__xonsh__.env.pop('__GRIDIRON_SOURCE_HELPERS_RENDERED__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:__xonsh__.env.pop('__GRIDIRON_WELCOME_RENDERED__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:__xonsh__.env.pop('__GRIDIRON_WELCOME_AFFIRMATION_RUN__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:__xonsh__.env.pop('__PHRED_QUEST_RUN__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/env_reset.xsh:__xonsh__.env.pop('__PHREDENV_LOADER_RUN__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_guard.xsh:user = $USER if 'USER' in env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_guard.xsh:    if flag in env and env[flag]:
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_guard.xsh:    env[flag] = True
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:lock_path = lock_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:if os.path.isfile(lock_path) or '__GRIDIRON_LAUNCHER_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:__xonsh__.env['__GRIDIRON_LAUNCHER_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:    "~/phredenv"
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:if '__SHELL_HEALTH_CHECK_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:__xonsh__.env['__SHELL_HEALTH_CHECK_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:    path = d.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:# 🧬 Check for environment variables
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:env_vars = ['VIRTUAL_ENV', 'PYTHONPATH']
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:for var in env_vars:
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:    if var in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:        echo f"🔗 {var}: ✅ {$__xonsh__.env[var]}"
+/home/phredo/projects/my_project/gridiron_gpt/shell/gridiron_launcher.xsh:xonsh_version = $__xonsh__.env.get('XONSH_VERSION', 'Unknown')
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-aliases.xsh:env['GRIDIRON_SESSION_STARTED'] = True
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-aliases.xsh:if env.get('GRIDIRON_SESSION_STARTED'):
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-aliases.xsh:user = env.get("USER", "unknown")
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-aliases.xsh:aliases['phred-reset'] = lambda: source_safe(os.path.expanduser("~/projects/my_project/gridiron_gpt/phredenv/reset.xsh"))
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-quest.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-quest.xsh:if '__PHRED_QUEST_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-quest.xsh:__xonsh__.env['__PHRED_QUEST_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-quest.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-quest.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-quest.xsh:echo "🚀 Next Step: Patch env_reset.xsh with guard and fingerprint"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-shell-launch.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-shell-launch.xsh:if '__PHRED_SHELL_LAUNCH_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-shell-launch.xsh:__xonsh__.env['__PHRED_SHELL_LAUNCH_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-shell-launch.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-shell-launch.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/phred-shell-launch.xsh:    path = path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh:# gridiron_gpt/shell/phredenv-loader.xsh
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh:    echo "🛡️ Session already started — skipping phredenv-loader.xsh."
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh:if '__PHREDENV_LOADER_RUN__' in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh:    echo "🚀 phredenv-loader already run — skipping."
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh:__xonsh__.env['__PHREDENV_LOADER_RUN__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh:echo f"[{timestamp}] phredenv-loader.xsh sourced by {user}" >> $log_path
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh:echo "║ 🚀 GridIron GPT — Phredenv Python Loader           ║"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh:loader_path = "~/projects/my_project/gridiron_gpt/phredenv/loader.py"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-loader.xsh:loader_path = loader_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:# gridiron_gpt/shell/phredenv-reset.xsh
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:    echo "🛡️ Session already started — skipping phredenv-reset.xsh."
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:log_path = log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:echo f"[{timestamp}] phredenv-reset.xsh sourced by {user}" >> $log_path
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:echo "║ Clears session flags and reloads environment       ║"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:echo "🔄 Resetting shell environment..."
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:__xonsh__.env.pop('__SHELL_HEALTH_CHECK_RUN__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:__xonsh__.env.pop('__SHELL_DIAGNOSTICS_RUN__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:__xonsh__.env.pop('__GRIDIRON_BANNER_RUN__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:__xonsh__.env.pop('__GRIDIRON_SOURCE_HELPERS_RENDERED__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-reset.xsh:__xonsh__.env.pop('__PHREDENV_DIAGNOSTICS_RUN__', None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:# gridiron_gpt/shell/phredenv-status.xsh
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and __xonsh__.env['GRIDIRON_SESSION_STARTED']:
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:    echo "🛡️ Session already started — skipping phredenv-status.xsh."
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:user = __xonsh__.env.get("USER", "unknown")
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:log_path = __xonsh__.env["HOME"] + "/projects/my_project/gridiron_gpt/logs/source_trace.log"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:echo f"[{timestamp}] phredenv-status.xsh sourced by {user}" >> $log_path
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:echo "║ Displays virtualenv, shell version, and directory  ║"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:# 📦 Virtual environment
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:venv = __xonsh__.env.get("VIRTUAL_ENV", None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:echo f"📦 Virtualenv: {venv if venv else '❌ Not active'}"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:version = __xonsh__.env.get("XONSH_VERSION", None)
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:echo f"🧩 GRIDIRON_MODE: {__xonsh__.env.get('GRIDIRON_MODE', '❌ Not set')}"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:echo f"🧩 PHREDENV_LOADED: {__xonsh__.env.get('__PHREDENV_LOADED__', '❌ Not set')}"
+/home/phredo/projects/my_project/gridiron_gpt/shell/phredenv-status.xsh:echo f"🧩 PIPELINE_CHECK_RUN: {__xonsh__.env.get('__PIPELINE_CHECK_RUN__', '❌ Not set')}"
+/home/phredo/projects/my_project/gridiron_gpt/shell/source-log.xsh:if 'GRIDIRON_SESSION_STARTED' in __xonsh__.env and $GRIDIRON_SESSION_STARTED:
+/home/phredo/projects/my_project/gridiron_gpt/shell/source-log.xsh:user = $USER if 'USER' in __xonsh__.env else "unknown"
+/home/phredo/projects/my_project/gridiron_gpt/shell/source-log.xsh:trace_path = trace_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/source-log.xsh:source_log_path = source_log_path.replace("~", __xonsh__.env["HOME"])
+/home/phredo/projects/my_project/gridiron_gpt/shell/source-log.xsh:if '__SOURCE_LOG_SESSION_HEADER__' not in __xonsh__.env:
+/home/phredo/projects/my_project/gridiron_gpt/shell/source-log.xsh:    __xonsh__.env['__SOURCE_LOG_SESSION_HEADER__'] = '1'
+/home/phredo/projects/my_project/gridiron_gpt/shell/source-log.xsh:    path = path.replace("~", __xonsh__.env["HOME"])

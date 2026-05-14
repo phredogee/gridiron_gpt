@@ -1,0 +1,6 @@
+print("My contact details:")
+print("--------------------------")
+print("Name: Fred Garza")
+print("Phone: 832-654-7497")
+print("Email: W217920804@hccs.edu")
+print("Website: learning.hccs.edu")

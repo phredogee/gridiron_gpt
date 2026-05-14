@@ -1,0 +1,37 @@
+# pyproject.toml
+
+[project]
+name = "phred"
+version = "0.1.0"
+description = "CLI ecosystem for sports analytics"
+authors = [{ name = "Alfredo" }]
+dependencies = [
+    "xonsh",  # if used
+    "click",  # or argparse, typer, etc.
+    # add others as needed
+]
+
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "mypy"]
+
+[project.scripts]
+phred-status = "phredenv.phred_status:app"
+semantic-router = "cli_modules.semantic_router:app"
+embed-cli = "cli_modules.embed_cli:app"
+reset-cli = "cli_modules.reset:app"
+dashboard-cli = "cli_modules.dashboard_cli:app"
+gridiron = "phred.cli.main:app"
+
+[project.entry-points."xonsh.xontribs"]
+phredenv = "phredenv"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["gridiron_gpt"]
+include = ["phred*", "gridiron_gpt*"]
