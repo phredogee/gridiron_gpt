@@ -151,3 +151,74 @@ def board(scoring, teams, rounds, top, changes_path):
         )
 
     click.echo()
+
+
+@draft.command()
+@click.option("--scoring", default="ppr", show_default=True,
+              type=click.Choice(["ppr", "half_ppr", "standard"]))
+@click.option("--season", default=2025, show_default=True, type=int,
+              help="Season year to index")
+def index(scoring, season):
+    """🗂️ Build the ask-query index from historical player stats (offseason use)"""
+    import nflreadpy as nfl
+    from gridiron_gpt.core.advisor import Advisor
+
+    score_col = "fantasy_points_ppr" if scoring != "standard" else "fantasy_points"
+
+    print(f"📊 Loading {season} player stats...")
+    df = nfl.load_player_stats(seasons=[season])
+    if hasattr(df, "to_pandas"):
+        df = df.to_pandas()
+
+    if score_col not in df.columns:
+        score_col = "fantasy_points_ppr" if "fantasy_points_ppr" in df.columns else "fantasy_points"
+
+    agg = (
+        df.groupby(["player_display_name", "position", "team"])
+        .agg(total_pts=(score_col, "sum"), games=(score_col, "count"))
+        .reset_index()
+    )
+    agg = agg[agg["total_pts"] > 0].sort_values("total_pts", ascending=False)
+
+    pos_names = {
+        "QB": "quarterback", "RB": "running back", "WR": "wide receiver",
+        "TE": "tight end", "K": "kicker",
+    }
+    team_names = {
+        "ARI": "Arizona Cardinals", "ATL": "Atlanta Falcons", "BAL": "Baltimore Ravens",
+        "BUF": "Buffalo Bills", "CAR": "Carolina Panthers", "CHI": "Chicago Bears",
+        "CIN": "Cincinnati Bengals", "CLE": "Cleveland Browns", "DAL": "Dallas Cowboys",
+        "DEN": "Denver Broncos", "DET": "Detroit Lions", "GB": "Green Bay Packers",
+        "HOU": "Houston Texans", "IND": "Indianapolis Colts", "JAX": "Jacksonville Jaguars",
+        "KC": "Kansas City Chiefs", "LAC": "Los Angeles Chargers", "LA": "Los Angeles Rams",
+        "LV": "Las Vegas Raiders", "MIA": "Miami Dolphins", "MIN": "Minnesota Vikings",
+        "NE": "New England Patriots", "NO": "New Orleans Saints", "NYG": "New York Giants",
+        "NYJ": "New York Jets", "PHI": "Philadelphia Eagles", "PIT": "Pittsburgh Steelers",
+        "SEA": "Seattle Seahawks", "SF": "San Francisco 49ers", "TB": "Tampa Bay Buccaneers",
+        "TEN": "Tennessee Titans", "WAS": "Washington Commanders",
+    }
+
+    players = []
+    for _, row in agg.iterrows():
+        name = row["player_display_name"]
+        pos_code = str(row["position"]).upper()
+        pos = pos_names.get(pos_code, pos_code.lower())
+        team = str(row["team"])
+        team_name = team_names.get(team, team)
+        pts = float(row["total_pts"])
+        games = int(row["games"])
+        ppg = pts / games if games > 0 else 0
+        players.append({
+            "player_name": name,
+            "position": pos_code,
+            "team": team,
+            "week": f"{season} season ({games} games)",
+            "fantasy_points": pts,
+            "surface": f"{ppg:.1f} pts/game average",
+            "environment": f"{season} full season",
+        })
+
+    advisor = Advisor()
+    advisor.build_from_players(players)
+    advisor.save()
+    click.echo(f"✅ Indexed {len(players)} players from {season} season — ask is ready.")
