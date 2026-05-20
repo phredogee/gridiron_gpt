@@ -1,4 +1,8 @@
-# 🏈 Gridiron GPT — ESPN Pipeline CLI
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
+# 🏈 GridironGPT — ESPN Pipeline CLI
 
 **Gridiron GPT** is a specialized toolkit for fetching, processing, and auditing fantasy football data. It features an ESPN-style player pipeline with dry-run diagnostics and semantic auditing to ensure data integrity before ingestion.
 
